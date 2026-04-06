@@ -28,11 +28,12 @@
 
   /* STICKY BAR */
   .sticky-bar{position:fixed;top:0;left:0;right:0;z-index:300;background:#0570de;padding:9px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;transform:translateY(-100%);opacity:0;transition:transform 0.35s ease,opacity 0.35s ease;}
+  .sticky-bar.show{transform:translateY(0);opacity:1;}
   .sticky-bar-left{color:rgba(255,255,255,0.85);font-size:13px;}
   .sticky-bar-left span{color:#fff;font-weight:600;}
   .sticky-phone{color:#fff;font-size:15px;font-weight:700;letter-spacing:-0.3px;}
   .sticky-btn{background:#fff;color:#0570de;font-size:12px;font-weight:600;padding:6px 14px;border-radius:5px;border:none;cursor:pointer;transition:transform 0.15s;}
-  .sticky-bar.show{transform:translateY(0);opacity:1;}
+  .sticky-btn:hover{transform:scale(1.04);}
 
   /* NAV */
   .nav{background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e6e6e6;padding:0 40px;height:48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
@@ -63,15 +64,12 @@
   .hero-location span{color:#63b3ed;}
   .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
   .btn-primary{background:#fff;color:#0a2540;font-size:15px;font-weight:600;padding:14px 28px;border-radius:6px;border:none;cursor:pointer;transition:transform 0.15s,box-shadow 0.2s;}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.25);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2);}
   .btn-secondary{background:transparent;color:#fff;font-size:15px;font-weight:500;padding:14px 28px;border-radius:6px;border:1.5px solid rgba(255,255,255,0.35);cursor:pointer;transition:background 0.2s,transform 0.15s;}
   .btn-secondary:hover{background:rgba(255,255,255,0.08);transform:translateY(-2px);}
   .review-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
   .review-badge{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:10px;padding:10px 16px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(8px);}
   .badge-logo{font-size:12px;font-weight:700;color:#fff;}
-  .badge-stars{color:#fbbf24;font-size:12px;letter-spacing:1px;}
-  .badge-rating{color:#fff;font-size:13px;font-weight:700;line-height:1;}
-  .badge-count{color:rgba(255,255,255,0.5);font-size:10px;}
   .hero-trust{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
   .trust-item{color:rgba(255,255,255,0.65);font-size:13px;display:flex;align-items:center;gap:6px;}
   .trust-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 2s ease-in-out infinite;}
@@ -104,52 +102,7 @@
   .service-icon svg{width:22px;height:22px;stroke:#0570de;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
   .service-name{font-size:15px;font-weight:600;color:#0a2540;margin-bottom:8px;}
   .service-desc{font-size:13px;color:#697386;line-height:1.55;}
-  .service-link{font-size:13px;color:#0570de;font-weight:500;margin-top:14px;display:block;opacity:0;transform:translateX(-6px);transition:opacity 0.2s,transform 0.2s;}
-  .service-card:hover .service-link{opacity:1;transform:translateX(0);}
-
-  /* REVIEWS */
-  .reviews{background-size:300% 300%;background-image:linear-gradient(135deg,#0a2540 0%,#0d3060 30%,#0a2540 50%,#051828 80%,#0a2540 100%);animation:reviewsBgShift 12s ease infinite;padding:72px 40px;text-align:center;}
-  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:980px;margin:0 auto;}
-  .review-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:24px;text-align:left;opacity:0;transform:translateY(24px);transition:background 0.25s,transform 0.25s,border-color 0.25s;}
-  .review-card.visible{animation:cardFadeUp 0.6s ease forwards;}
-  .review-stars{color:#fbbf24;font-size:13px;letter-spacing:2px;}
-  .review-source{color:rgba(255,255,255,0.3);font-size:11px;font-weight:500;}
-  .review-text{color:rgba(255,255,255,0.8);font-size:13px;line-height:1.6;font-style:italic;margin-bottom:14px;}
-  .review-author{color:rgba(255,255,255,0.45);font-size:12px;font-weight:500;}
-
-  /* REPUTATION */
-  .reputation{background:#fff;padding:80px 40px;}
-  .reputation-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-  .rep-title{font-size:32px;font-weight:700;color:#0a2540;letter-spacing:-0.7px;line-height:1.2;margin-bottom:10px;}
-  .rep-title span{color:#0570de;}
-  .rep-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-  .rep-stat{background:#f6f9fc;border:1px solid #e6ebf1;border-radius:10px;padding:20px 18px;}
-  .rep-stat-num{font-size:32px;font-weight:700;color:#0a2540;letter-spacing:-1px;line-height:1;}
-  .rep-trust-title{font-size:14px;font-weight:600;color:#0a2540;margin-bottom:4px;}
-  .rep-trust-text{font-size:12px;color:#697386;line-height:1.55;}
-
-  /* FAQ */
-  .faq{background:#f6f9fc;padding:72px 40px;}
-  .faq-inner{max-width:700px;margin:0 auto;}
-  .faq-btn{width:100%;text-align:left;border:1px solid #c8d0da;border-radius:10px;padding:18px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fff;}
-  .faq-item.open .faq-btn{border-color:#0570de;}
-  .faq-answer{padding:12px 20px 18px;font-size:14px;color:#333;line-height:1.7;background:#fff;border-left:1px solid #0570de;border-right:1px solid #0570de;border-bottom:1px solid #0570de;border-radius:0 0 10px 10px;display:none;}
-  .faq-item.open .faq-answer{display:block;}
-
-  /* CONTACT */
-  .contact{background:#0a2540;padding:72px 40px;}
-  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:960px;margin:0 auto;align-items:start;}
-  .form-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:30px;}
-  .form-input{width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:7px;padding:11px 14px;font-size:14px;color:#fff;margin-bottom:12px;}
-  .form-submit{width:100%;background:#0570de;color:#fff;font-size:15px;font-weight:600;padding:14px;border-radius:7px;border:none;cursor:pointer;}
-
-  /* FOOTER */
-  .footer{background:#0a2540;border-top:1px solid rgba(255,255,255,0.08);padding:40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;}
-  .footer-brand{color:#fff;font-size:15px;font-weight:700;}
-  .footer-info{color:rgba(255,255,255,0.4);font-size:13px;margin-top:8px;}
-
-  /* REVEAL */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
   .reveal.visible{opacity:1;transform:translateY(0);}
 
   @media(max-width:768px){
@@ -170,14 +123,19 @@
 
 <nav class="nav">
   <div class="nav-logo">
-    <div class="nav-logo-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    </div>
     <div class="nav-brand">Zuniga's <span>Plumbing</span></div>
   </div>
   <div class="nav-links">
     <a class="nav-link" href="#services">Services</a>
+    <a class="nav-link" href="#area">Service Area</a>
     <a class="nav-link" href="#reviews">Reviews</a>
+    <a class="nav-link" href="#faq">FAQ</a>
     <a class="nav-link" href="#contact">Contact</a>
   </div>
+  <button class="nav-cta">(773) 619-2730</button>
 </nav>
 
 <section class="hero" id="hero">
@@ -205,6 +163,7 @@
 <section class="section" id="services" style="text-align:center;">
   <div class="section-label reveal">What We Do</div>
   <div class="section-title reveal">Full Service Plumbing & Heating</div>
+  <p class="section-sub reveal" style="margin:0 auto 48px;">From a leaky faucet to a full sewer line replacement — our team gets it done right the first time.</p>
   <div class="services-grid">
     <div class="service-card reveal">
       <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
@@ -219,59 +178,19 @@
   </div>
 </section>
 
-<section class="reviews" id="reviews">
-  <div class="section-label reveal" style="color:#63b3ed;">Customer Reviews</div>
-  <div class="reviews-grid">
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-text">"Walter is a fair, skilled and honest plumber. Highly recommend."</div>
-      <div class="review-author">— David W., Chicago</div>
-    </div>
-  </div>
-</section>
-
-<section class="reputation">
-  <div class="reputation-inner">
-    <div class="reveal">
-      <div class="rep-title">Built on <span>50 Years</span> of Trust</div>
-      <div class="rep-stats">
-        <div class="rep-stat"><div class="rep-stat-num">50+</div><div class="rep-stat-lbl">Years Experience</div></div>
-      </div>
-    </div>
-    <div class="reveal">
-      <div class="rep-trust-title">Licensed & Bonded</div>
-      <div class="rep-trust-text">Fully insured for residential and commercial work.</div>
-    </div>
-  </div>
-</section>
-
-<section class="faq">
-  <div class="faq-inner">
-    <div class="faq-item">
-      <button class="faq-btn">Do you offer free estimates?</button>
-      <div class="faq-answer">Yes — free quotes on all jobs. Call (773) 619-2730.</div>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact">
+<section class="contact" id="contact" style="background:#0a2540;padding:72px 40px;color:#fff;text-align:center;">
   <div class="contact-wrap">
     <div class="reveal">
-      <div class="contact-heading">Request a Free Quote</div>
-      <div class="contact-detail-text">(773) 619-2730</div>
-      <div class="contact-detail-text">zunigaplumbing@yahoo.com</div>
-    </div>
-    <div class="form-card reveal">
-      <input class="form-input" type="text" placeholder="Full Name">
-      <input class="form-input" type="tel" placeholder="Phone Number">
-      <button class="form-submit">Send Request</button>
+      <div class="contact-heading" style="font-size:32px;font-weight:700;margin-bottom:12px;">Request a Free Quote</div>
+      <div class="contact-detail-text" style="font-size:24px;font-weight:700;color:#63b3ed;">(773) 619-2730</div>
+      <div class="contact-detail-text" style="font-size:14px;color:rgba(255,255,255,0.6);margin-top:8px;">zunigaplumbing@yahoo.com</div>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div><div class="footer-brand">Zuniga's <span>Plumbing</span> Inc.</div></div>
-  <div class="footer-info">© 2026 Zuniga's Plumbing Inc. All rights reserved.</div>
+<footer class="footer" style="background:#0a2540;border-top:1px solid rgba(255,255,255,0.08);padding:40px;display:flex;justify-content:space-between;color:#fff;">
+  <div class="footer-brand" style="font-weight:700;">Zuniga's <span>Plumbing</span> Inc.</div>
+  <div class="footer-info" style="color:rgba(255,255,255,0.4);font-size:13px;">© 2026 Zuniga's Plumbing Inc. All rights reserved.</div>
 </footer>
 
 <script>
@@ -309,12 +228,6 @@
     });
   },{threshold:0.1});
   reveals.forEach(el=>revealObs.observe(el));
-
-  document.querySelectorAll('.faq-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      btn.parentElement.classList.toggle('open');
-    });
-  });
 </script>
 </body>
 </html>
