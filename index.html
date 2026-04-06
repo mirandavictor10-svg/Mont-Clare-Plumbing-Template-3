@@ -1,479 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diversey Plumbing & Sewer — Chicago's Family Plumber Since 1942</title>
-  <meta name="description" content="Diversey Plumbing and Sewer has served Chicago since 1942. Expert drain, sewer, and plumbing service — licensed, family-owned, and trusted for 84 years. Call (773) 252-8688." />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corporate Template — Zuniga's Plumbing Inc.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',-apple-system,sans-serif;background:#fff;color:#1a1a2e;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  @keyframes badgePop{0%{transform:scale(0.7);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+  @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  @keyframes reviewsBgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  @keyframes cardFadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes ripple{0%{transform:scale(0.8);opacity:1}100%{transform:scale(2.2);opacity:0}}
+
+  .anim-fade-up{opacity:0;animation:fadeUp 0.7s ease forwards;}
+  .anim-fade-in{opacity:0;animation:fadeIn 0.8s ease forwards;}
+  .d1{animation-delay:0.1s}.d2{animation-delay:0.25s}.d3{animation-delay:0.4s}.d4{animation-delay:0.55s}.d5{animation-delay:0.7s}
+
+  /* STICKY BAR */
+  .sticky-bar{position:fixed;top:0;left:0;right:0;z-index:300;background:#0570de;padding:9px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;transform:translateY(-100%);opacity:0;transition:transform 0.35s ease,opacity 0.35s ease;}
+  .sticky-bar-left{color:rgba(255,255,255,0.85);font-size:13px;}
+  .sticky-bar-left span{color:#fff;font-weight:600;}
+  .sticky-phone{color:#fff;font-size:15px;font-weight:700;letter-spacing:-0.3px;}
+  .sticky-btn{background:#fff;color:#0570de;font-size:12px;font-weight:600;padding:6px 14px;border-radius:5px;border:none;cursor:pointer;transition:transform 0.15s;}
+  .sticky-bar.show{transform:translateY(0);opacity:1;}
+
+  /* NAV */
+  .nav{background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #e6e6e6;padding:0 40px;height:48px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
+  .nav-logo{display:flex;align-items:center;gap:8px;}
+  .nav-logo-icon{width:28px;height:28px;background:#0570de;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .nav-logo-icon svg{width:15px;height:15px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .nav-brand{font-size:15px;font-weight:700;color:#1a1a2e;letter-spacing:-0.3px;}
+  .nav-brand span{color:#0570de;}
+  .nav-links{display:flex;gap:20px;}
+  .nav-link{font-size:13px;color:#425466;font-weight:500;cursor:pointer;text-decoration:none;transition:color 0.2s;}
+  .nav-link:hover{color:#0570de;}
+  .nav-cta{background:#0570de;color:#fff;font-size:12px;font-weight:500;padding:6px 14px;border-radius:5px;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;}
+  .nav-cta:hover{background:#0461c7;transform:translateY(-1px);}
+
+  /* HERO */
+  .hero{background-size:300% 300%;background-image:linear-gradient(135deg,#0a2540 0%,#1a3a5c 40%,#0570de 70%,#0a2540 100%);animation:gradientShift 8s ease infinite;padding:80px 40px 110px;text-align:center;position:relative;overflow:hidden;}
+  .hero-orb1{position:absolute;top:-80px;right:-80px;width:320px;height:320px;background:rgba(99,179,237,0.07);border-radius:50%;animation:float 6s ease-in-out infinite;}
+  .hero-orb2{position:absolute;bottom:-60px;left:-60px;width:240px;height:240px;background:rgba(5,112,222,0.1);border-radius:50%;animation:float 8s ease-in-out infinite reverse;}
+  .hero-wave{position:absolute;bottom:-2px;left:0;width:100%;overflow:hidden;line-height:0;}
+  .hero-badge{display:inline-block;background:rgba(255,255,255,0.12);color:#a8d4ff;font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;border:1px solid rgba(255,255,255,0.2);margin-bottom:20px;letter-spacing:0.3px;animation:badgePop 0.6s ease 0.1s forwards;opacity:0;}
+  .hero-typing-wrap{min-height:62px;margin-bottom:6px;}
+  .hero-typing{color:#63b3ed;font-size:48px;font-weight:700;letter-spacing:-1px;line-height:1.1;}
+  .cursor{display:inline-block;width:3px;height:48px;background:#63b3ed;margin-left:3px;vertical-align:middle;animation:blink 0.75s step-end infinite;}
+  .hero-static{color:#fff;font-size:48px;font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:16px;}
+  .hero-sub{color:rgba(255,255,255,0.75);font-size:18px;line-height:1.6;max-width:540px;margin:0 auto 10px;}
+  .hero-promise{display:inline-flex;align-items:center;gap:6px;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);color:#4ade80;font-size:13px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:28px;}
+  .hero-location{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:32px;}
+  .hero-location span{color:#63b3ed;}
+  .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
+  .btn-primary{background:#fff;color:#0a2540;font-size:15px;font-weight:600;padding:14px 28px;border-radius:6px;border:none;cursor:pointer;transition:transform 0.15s,box-shadow 0.2s;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.25);}
+  .btn-secondary{background:transparent;color:#fff;font-size:15px;font-weight:500;padding:14px 28px;border-radius:6px;border:1.5px solid rgba(255,255,255,0.35);cursor:pointer;transition:background 0.2s,transform 0.15s;}
+  .btn-secondary:hover{background:rgba(255,255,255,0.08);transform:translateY(-2px);}
+  .review-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
+  .review-badge{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:10px;padding:10px 16px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(8px);}
+  .badge-logo{font-size:12px;font-weight:700;color:#fff;}
+  .badge-stars{color:#fbbf24;font-size:12px;letter-spacing:1px;}
+  .badge-rating{color:#fff;font-size:13px;font-weight:700;line-height:1;}
+  .badge-count{color:rgba(255,255,255,0.5);font-size:10px;}
+  .hero-trust{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
+  .trust-item{color:rgba(255,255,255,0.65);font-size:13px;display:flex;align-items:center;gap:6px;}
+  .trust-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 2s ease-in-out infinite;}
+
+  /* TICKER */
+  .ticker{background:#0a2540;padding:12px 0;overflow:hidden;}
+  .ticker-inner{display:flex;white-space:nowrap;animation:tickerScroll 22s linear infinite;}
+  .ticker-item{color:rgba(255,255,255,0.5);font-size:13px;padding:0 32px;display:flex;align-items:center;gap:10px;}
+  .ticker-sep{color:#0570de;}
+
+  /* STATS */
+  .stats{background:#f6f9fc;border-bottom:1px solid #e6ebf1;padding:32px 40px;display:flex;justify-content:center;gap:0;}
+  .stat{text-align:center;padding:0 48px;border-right:1px solid #e6ebf1;}
+  .stat:last-child{border-right:none;}
+  .stat-num{font-size:30px;font-weight:700;color:#0a2540;letter-spacing:-1px;}
+  .stat-num span{color:#0570de;}
+  .stat-label{font-size:12px;color:#697386;margin-top:4px;}
+
+  /* SHARED SECTION */
+  .section{padding:72px 40px;}
+  .section-label{font-size:11px;font-weight:600;color:#0570de;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px;}
+  .section-title{font-size:34px;font-weight:700;color:#0a2540;letter-spacing:-0.8px;line-height:1.2;margin-bottom:12px;}
+  .section-sub{font-size:15px;color:#697386;line-height:1.6;max-width:520px;margin-bottom:48px;}
+
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:980px;margin:0 auto;}
+  .service-card{background:#fff;border:1px solid #e6ebf1;border-radius:10px;padding:28px 24px;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;cursor:pointer;}
+  .service-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(5,112,222,0.12);border-color:#b3d4f7;}
+  .service-icon{width:44px;height:44px;background:#eff8ff;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .service-icon svg{width:22px;height:22px;stroke:#0570de;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .service-name{font-size:15px;font-weight:600;color:#0a2540;margin-bottom:8px;}
+  .service-desc{font-size:13px;color:#697386;line-height:1.55;}
+  .service-link{font-size:13px;color:#0570de;font-weight:500;margin-top:14px;display:block;opacity:0;transform:translateX(-6px);transition:opacity 0.2s,transform 0.2s;}
+  .service-card:hover .service-link{opacity:1;transform:translateX(0);}
+
+  /* REVIEWS */
+  .reviews{background-size:300% 300%;background-image:linear-gradient(135deg,#0a2540 0%,#0d3060 30%,#0a2540 50%,#051828 80%,#0a2540 100%);animation:reviewsBgShift 12s ease infinite;padding:72px 40px;text-align:center;}
+  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:980px;margin:0 auto;}
+  .review-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:24px;text-align:left;opacity:0;transform:translateY(24px);transition:background 0.25s,transform 0.25s,border-color 0.25s;}
+  .review-card.visible{animation:cardFadeUp 0.6s ease forwards;}
+  .review-stars{color:#fbbf24;font-size:13px;letter-spacing:2px;}
+  .review-source{color:rgba(255,255,255,0.3);font-size:11px;font-weight:500;}
+  .review-text{color:rgba(255,255,255,0.8);font-size:13px;line-height:1.6;font-style:italic;margin-bottom:14px;}
+  .review-author{color:rgba(255,255,255,0.45);font-size:12px;font-weight:500;}
+
+  /* REPUTATION */
+  .reputation{background:#fff;padding:80px 40px;}
+  .reputation-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .rep-title{font-size:32px;font-weight:700;color:#0a2540;letter-spacing:-0.7px;line-height:1.2;margin-bottom:10px;}
+  .rep-title span{color:#0570de;}
+  .rep-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .rep-stat{background:#f6f9fc;border:1px solid #e6ebf1;border-radius:10px;padding:20px 18px;}
+  .rep-stat-num{font-size:32px;font-weight:700;color:#0a2540;letter-spacing:-1px;line-height:1;}
+  .rep-trust-title{font-size:14px;font-weight:600;color:#0a2540;margin-bottom:4px;}
+  .rep-trust-text{font-size:12px;color:#697386;line-height:1.55;}
+
+  /* FAQ */
+  .faq{background:#f6f9fc;padding:72px 40px;}
+  .faq-inner{max-width:700px;margin:0 auto;}
+  .faq-btn{width:100%;text-align:left;border:1px solid #c8d0da;border-radius:10px;padding:18px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;background:#fff;}
+  .faq-item.open .faq-btn{border-color:#0570de;}
+  .faq-answer{padding:12px 20px 18px;font-size:14px;color:#333;line-height:1.7;background:#fff;border-left:1px solid #0570de;border-right:1px solid #0570de;border-bottom:1px solid #0570de;border-radius:0 0 10px 10px;display:none;}
+  .faq-item.open .faq-answer{display:block;}
+
+  /* CONTACT */
+  .contact{background:#0a2540;padding:72px 40px;}
+  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:960px;margin:0 auto;align-items:start;}
+  .form-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:30px;}
+  .form-input{width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:7px;padding:11px 14px;font-size:14px;color:#fff;margin-bottom:12px;}
+  .form-submit{width:100%;background:#0570de;color:#fff;font-size:15px;font-weight:600;padding:14px;border-radius:7px;border:none;cursor:pointer;}
+
+  /* FOOTER */
+  .footer{background:#0a2540;border-top:1px solid rgba(255,255,255,0.08);padding:40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;}
+  .footer-brand{color:#fff;font-size:15px;font-weight:700;}
+  .footer-info{color:rgba(255,255,255,0.4);font-size:13px;margin-top:8px;}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  @media(max-width:768px){
+    .nav-links{display:none;}
+    .reputation-inner,.contact-wrap{grid-template-columns:1fr;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header" id="header">
-    <div class="container header__inner">
-      <a href="#" class="header__logo">
-        <div class="header__logo-icon">DP</div>
-        <div class="header__logo-text">
-          <span class="header__logo-name">Diversey Plumbing</span>
-          <span class="header__logo-tagline">& Sewer · Since 1942</span>
-        </div>
-      </a>
-      <nav class="header__nav" id="nav">
-        <ul class="header__links">
-          <li><a href="#services" class="header__link">Services</a></li>
-          <li><a href="#about" class="header__link">Our Story</a></li>
-          <li><a href="#reviews" class="header__link">Reviews</a></li>
-          <li><a href="#areas" class="header__link">Service Areas</a></li>
-          <li><a href="#contact" class="header__link">Contact</a></li>
-        </ul>
-        <div class="header__cta">
-          <a href="tel:7732528688" class="header__phone">
-            <span class="header__phone-icon">📞</span>
-            (773) 252-8688
-          </a>
-          <a href="#contact" class="btn btn--primary">Schedule Service</a>
-        </div>
-      </nav>
-      <button class="header__toggle" id="menu-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-left">Need a plumber? <span>We call back within 15 minutes</span></div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span class="sticky-phone">(773) 619-2730</span>
+    <button class="sticky-btn">Call Now</button>
+  </div>
+</div>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="hero">
-    <div class="hero__bg-pattern"></div>
-    <div class="hero__float hero__float--1"></div>
-    <div class="hero__float hero__float--2"></div>
-    <div class="hero__container">
-      <div class="hero__content">
-        <div class="hero__badge">
-          <span class="hero__badge-dot"></span>
-          Family-Owned Since 1942
-        </div>
-        <h1 class="hero__title">
-          84 Years.<br><span>One Standard.</span>
-        </h1>
-        <p class="hero__description">
-          Diversey Plumbing has served Chicago since 1942. Expert drain, sewer, and plumbing
-          service — done right, every time. Three generations of trusted workmanship.
-        </p>
-        <div class="hero__actions">
-          <a href="tel:7732528688" class="btn btn--phone">
-            <svg class="btn--icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            Call (773) 252-8688
-          </a>
-          <a href="#contact" class="btn btn--outline">Schedule Service</a>
-        </div>
-        <div class="hero__stats">
-          <div class="hero__stat">
-            <span class="hero__stat-number" data-count="84">0</span>
-            <span class="hero__stat-label">Years in Business</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-number" data-count="3">0</span>
-            <span class="hero__stat-label">Generations</span>
-          </div>
-          <div class="hero__stat">
-            <span class="hero__stat-number" data-count="1942" data-raw="true">1942</span>
-            <span class="hero__stat-label">Established</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero__visual">
-        <div class="hero__image-wrapper" id="hero-image">
-          <img src="/hero-plumber.png" alt="Professional Diversey Plumbing technician working in a Chicago home" />
-        </div>
-        <div class="hero__image-badge">
-          <div class="hero__image-badge-icon">🛡️</div>
-          <div class="hero__image-badge-text">
-            <span class="hero__image-badge-title">IDPH Licensed</span>
-            <span class="hero__image-badge-sub">License #055-014914</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-logo-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+    <div class="nav-brand">Zuniga's <span>Plumbing</span></div>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="#services">Services</a>
+    <a class="nav-link" href="#reviews">Reviews</a>
+    <a class="nav-link" href="#contact">Contact</a>
+  </div>
+</nav>
 
-  <!-- ===== TRUST STRIP ===== -->
-  <section class="trust-strip">
-    <div class="container trust-strip__inner">
-      <div class="trust-strip__item">
-        <span class="trust-strip__icon">🏛️</span>
-        Since 1942
-      </div>
-      <div class="trust-strip__divider"></div>
-      <div class="trust-strip__item">
-        <span class="trust-strip__icon">👨‍👩‍👦</span>
-        Family Owned & Operated
-      </div>
-      <div class="trust-strip__divider"></div>
-      <div class="trust-strip__item">
-        <span class="trust-strip__icon">📋</span>
-        IDPH Licensed
-      </div>
-      <div class="trust-strip__divider"></div>
-      <div class="trust-strip__item">
-        <span class="trust-strip__icon">💳</span>
-        Visa & Mastercard Accepted
-      </div>
-      <div class="trust-strip__divider"></div>
-      <div class="trust-strip__item">
-        <span class="trust-strip__icon">📍</span>
-        Chicago, IL
-      </div>
-    </div>
-  </section>
+<section class="hero" id="hero">
+  <div class="hero-badge anim-fade-in d1">★ Serving Chicago for 50+ Years</div>
+  <div class="hero-typing-wrap anim-fade-up d2"><div class="hero-typing" id="typingText"></div></div>
+  <div class="hero-static anim-fade-up d3">We Can Fix That.</div>
+  <p class="hero-sub anim-fade-up d3">Full service plumbing and heating for residential and commercial properties in Chicago.</p>
+  <div class="hero-ctas anim-fade-up d4">
+    <button class="btn-primary">Get a Free Quote</button>
+  </div>
+</section>
 
-  <!-- ===== SERVICES ===== -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="reveal">
-        <span class="section-label">What We Do</span>
-        <h2 class="section-title">Expert Plumbing &<br>Sewer Services</h2>
-        <p class="section-subtitle">Two divisions — one standard of excellence. From a clogged drain to a full sewer system install, we handle it all.</p>
-      </div>
-      <div class="services__grid">
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-card__icon">🔧</div>
-          <h3 class="service-card__title">Drain Cleaning</h3>
-          <p class="service-card__desc">All drain line blockages removed quickly and effectively. Ask about our drain cleaning maintenance programs.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-card__icon">🎥</div>
-          <h3 class="service-card__title">Sewer Inspection</h3>
-          <p class="service-card__desc">Camera inspection of your underground sewer system. Find the problem before it becomes an emergency.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-3">
-          <div class="service-card__icon">🔥</div>
-          <h3 class="service-card__title">Water Heaters</h3>
-          <p class="service-card__desc">Water heater replacement and repair. We install all major brands with reliable, code-compliant work.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-1">
-          <div class="service-card__icon">💧</div>
-          <h3 class="service-card__title">Leak Detection</h3>
-          <p class="service-card__desc">Pipe leak detection and gas leak detection. We find the source and fix it right — no guesswork.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="service-card__icon">🏗️</div>
-          <h3 class="service-card__title">Sewer Systems</h3>
-          <p class="service-card__desc">New sewer system design and installation. Flood control, catch basins, and seepage pipe — our specialty.</p>
-        </div>
-        <div class="service-card reveal reveal-delay-3">
-          <div class="service-card__icon">⚡</div>
-          <h3 class="service-card__title">Sump & Ejector Pumps</h3>
-          <p class="service-card__desc">Sump pump and ejector pump replacement including battery backup systems. Stay protected year-round.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Drain Cleaning · Sewer Line Replacement · Gas Leak Detection · Frozen Pipe Repair · Kitchen Remodeling · </span>
+    <span class="ticker-item">Drain Cleaning · Sewer Line Replacement · Gas Leak Detection · Frozen Pipe Repair · Kitchen Remodeling · </span>
+  </div>
+</div>
 
-  <!-- ===== WHY DIVERSEY ===== -->
-  <section class="section section--cream" id="why">
-    <div class="container">
-      <div class="reveal" style="text-align: center;">
-        <span class="section-label">Why Choose Us</span>
-        <h2 class="section-title" style="margin-left: auto; margin-right: auto;">Three Reasons Chicagoans<br>Trust Diversey</h2>
-      </div>
-      <div class="why__grid">
-        <div class="why-card reveal reveal-delay-1">
-          <div class="why-card__number" data-count="84">0</div>
-          <h3 class="why-card__title">Years of Experience</h3>
-          <p class="why-card__desc">We've been fixing Chicago's plumbing since 1942. That's not marketing — it's a track record you can trust.</p>
-        </div>
-        <div class="why-card reveal reveal-delay-2">
-          <div class="why-card__number">3<sup style="font-size:0.5em">rd</sup></div>
-          <h3 class="why-card__title">Generation Family Business</h3>
-          <p class="why-card__desc">Three generations of plumbing expertise. We treat your home like our own because our reputation is our legacy.</p>
-        </div>
-        <div class="why-card reveal reveal-delay-3">
-          <div class="why-card__number">2</div>
-          <h3 class="why-card__title">Full Service Divisions</h3>
-          <p class="why-card__desc">A Service Division for repairs and maintenance, plus a Project Division for construction, rehabs, and new installs.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<div class="stats">
+  <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Years in Business</div></div>
+  <div class="stat"><div class="stat-num">A+</div><div class="stat-label">BBB Rating</div></div>
+</div>
 
-  <!-- ===== REVIEWS ===== -->
-  <section class="section" id="reviews">
-    <div class="container">
-      <div class="reveal" style="text-align: center;">
-        <span class="section-label">Customer Reviews</span>
-        <h2 class="section-title" style="margin-left: auto; margin-right: auto;">What Our Customers Say</h2>
-        <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Real reviews from real Chicago homeowners.</p>
-      </div>
-      <div class="reviews__grid">
-        <div class="review-card reveal reveal-delay-1">
-          <div class="review-card__quote">"</div>
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"They've been our family plumber for years. When our basement flooded on a Saturday morning, they were there within an hour. Professional, fair, and honest — exactly what you want in a plumber."</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar">MK</div>
-            <div>
-              <div class="review-card__name">Maria K.</div>
-              <div class="review-card__location">Belmont Cragin, Chicago</div>
-            </div>
-          </div>
-        </div>
-        <div class="review-card reveal reveal-delay-2">
-          <div class="review-card__quote">"</div>
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"Diversey Plumbing installed a new sewer system for our two-flat. The work was clean, on schedule, and the price was fair. They know what they're doing — 80+ years in business says it all."</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar">TJ</div>
-            <div>
-              <div class="review-card__name">Tony J.</div>
-              <div class="review-card__location">Portage Park, Chicago</div>
-            </div>
-          </div>
-        </div>
-        <div class="review-card reveal reveal-delay-3">
-          <div class="review-card__quote">"</div>
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"Called about a frozen pipe in January. They talked me through the immediate steps on the phone and came out first thing the next morning. No upselling, no drama. Just solid work."</p>
-          <div class="review-card__author">
-            <div class="review-card__avatar">SL</div>
-            <div>
-              <div class="review-card__name">Sarah L.</div>
-              <div class="review-card__location">Jefferson Park, Chicago</div>
-            </div>
-          </div>
-        </div>
-      </div>
+<section class="section" id="services" style="text-align:center;">
+  <div class="section-label reveal">What We Do</div>
+  <div class="section-title reveal">Full Service Plumbing & Heating</div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <div class="service-name">Drain Cleaning</div>
+      <div class="service-desc">Power rodding, hydro jetting, and full drain cleaning for all blockages.</div>
     </div>
-  </section>
-
-  <!-- ===== ABOUT / HERITAGE ===== -->
-  <section class="section section--cream" id="about">
-    <div class="container">
-      <div class="about__grid">
-        <div class="about__image reveal">
-          <img src="/about-storefront.png" alt="Diversey Plumbing storefront on a classic Chicago street" />
-          <div class="about__image-overlay">
-            <span class="about__year">1942</span>
-            <span class="about__year-text">Year we opened our doors on Belmont Avenue</span>
-          </div>
-        </div>
-        <div class="about__content reveal reveal-delay-2">
-          <span class="section-label">Our Story</span>
-          <h2>A Family Business Built on&nbsp;Trust</h2>
-          <p>Diversey Plumbing and Sewer has been a fixture of Chicago's Northwest Side since 1942. For over 84 years, three generations of our family have provided dependable plumbing and sewer service to homeowners across the city.</p>
-          <p>We're not the flashiest company. We don't have a jingle or a mascot. What we have is experience — the kind you only get from doing the work, year after year, in the same community. That's worth something.</p>
-          <div class="about__highlights">
-            <div class="about__highlight">
-              <span class="about__highlight-icon">✓</span>
-              IDPH Licensed (#055-014914)
-            </div>
-            <div class="about__highlight">
-              <span class="about__highlight-icon">✓</span>
-              Family Owned & Operated
-            </div>
-            <div class="about__highlight">
-              <span class="about__highlight-icon">✓</span>
-              Residential & Project Divisions
-            </div>
-            <div class="about__highlight">
-              <span class="about__highlight-icon">✓</span>
-              Serving Chicago Since 1942
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SERVICE AREAS ===== -->
-  <section class="section" id="areas">
-    <div class="container">
-      <div class="areas__content">
-        <div class="reveal">
-          <span class="section-label">Where We Work</span>
-          <h2 class="section-title">Serving Chicago's<br>Northwest Side & Beyond</h2>
-          <p class="section-subtitle" style="margin-bottom: var(--space-2xl);">Based at 7147 W. Belmont Ave, we serve homeowners across Chicago and the surrounding neighborhoods.</p>
-          <div class="areas__list">
-            <div class="areas__item"><span class="areas__item-dot"></span>Belmont Cragin</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Portage Park</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Jefferson Park</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Irving Park</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Dunning</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Montclare</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Hermosa</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Logan Square</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Avondale</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Norwood Park</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Harwood Heights</div>
-            <div class="areas__item"><span class="areas__item-dot"></span>Elmwood Park</div>
-          </div>
-        </div>
-        <div class="areas__map reveal reveal-delay-2">
-          <span class="areas__map-pin">📍</span>
-          <div style="text-align:center;padding:2rem;">
-            <span style="font-size:3rem;display:block;margin-bottom:1rem;">🗺️</span>
-            <span style="font-family:var(--font-heading);font-size:1.25rem;color:var(--navy);display:block;margin-bottom:0.5rem;">Chicago, IL</span>
-            <span style="font-size:0.85rem;color:var(--text-secondary);">7147 W. Belmont Ave · 60634</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== EMERGENCY CTA ===== -->
-  <section class="emergency">
-    <div class="container emergency__content">
-      <div class="emergency__icon">🚨</div>
-      <h2 class="emergency__title">Plumbing Emergency?</h2>
-      <a href="tel:7732528688" class="emergency__phone">(773) 252-8688</a>
-      <p class="emergency__sub">Monday – Saturday · 8:00 AM – 4:00 PM</p>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT ===== -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="reveal" style="text-align:center;margin-bottom:var(--space-xl);">
-        <span class="section-label">Get In Touch</span>
-        <h2 class="section-title" style="margin-left:auto;margin-right:auto;">Schedule Service Today</h2>
-      </div>
-      <div class="contact__grid">
-        <div class="contact__info reveal">
-          <div class="contact__item">
-            <div class="contact__item-icon">📞</div>
-            <div class="contact__item-content">
-              <h4>Call Us</h4>
-              <p><a href="tel:7732528688" style="color:var(--copper);font-weight:600;">(773) 252-8688</a><br>Fax: (773) 688-5672</p>
-            </div>
-          </div>
-          <div class="contact__item">
-            <div class="contact__item-icon">📍</div>
-            <div class="contact__item-content">
-              <h4>Visit Us</h4>
-              <p>7147 W. Belmont Ave<br>Chicago, IL 60634</p>
-            </div>
-          </div>
-          <div class="contact__item">
-            <div class="contact__item-icon">🕐</div>
-            <div class="contact__item-content">
-              <h4>Hours</h4>
-              <p>Monday – Friday: 8:00 AM – 4:00 PM<br>Saturday: 8:00 AM – 4:00 PM<br>Sunday: Closed</p>
-            </div>
-          </div>
-          <div class="contact__item">
-            <div class="contact__item-icon">✉️</div>
-            <div class="contact__item-content">
-              <h4>Email</h4>
-              <p><a href="mailto:Diversey.Plumbing@yahoo.com" style="color:var(--copper);">Diversey.Plumbing@yahoo.com</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="contact__form reveal reveal-delay-2">
-          <h3>Request a Free Estimate</h3>
-          <form id="contact-form">
-            <div class="form__row">
-              <div class="form__group">
-                <label class="form__label" for="name">Full Name *</label>
-                <input class="form__input" type="text" id="name" name="name" placeholder="Your name" required />
-              </div>
-              <div class="form__group">
-                <label class="form__label" for="phone">Phone Number *</label>
-                <input class="form__input" type="tel" id="phone" name="phone" placeholder="(773) 000-0000" required />
-              </div>
-            </div>
-            <div class="form__group">
-              <label class="form__label" for="email">Email</label>
-              <input class="form__input" type="email" id="email" name="email" placeholder="your@email.com" />
-            </div>
-            <div class="form__group">
-              <label class="form__label" for="service">Service Needed</label>
-              <select class="form__select" id="service" name="service">
-                <option value="">Select a service...</option>
-                <option>Drain Cleaning</option>
-                <option>Sewer Inspection / Camera</option>
-                <option>Sewer Repair or Replacement</option>
-                <option>Water Heater</option>
-                <option>Sump Pump / Ejector Pump</option>
-                <option>Gas Leak Detection</option>
-                <option>Frozen Pipe</option>
-                <option>Catch Basin Repair</option>
-                <option>Flood Control</option>
-                <option>New Construction / Rehab</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form__group">
-              <label class="form__label" for="message">Tell Us About Your Issue</label>
-              <textarea class="form__textarea" id="message" name="message" placeholder="Describe the problem or project..."></textarea>
-            </div>
-            <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">
-              Submit Request
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <div class="footer__brand-logo">
-            <div class="header__logo-icon">DP</div>
-            <div class="header__logo-text">
-              <span class="header__logo-name">Diversey Plumbing</span>
-              <span class="header__logo-tagline">& Sewer · Since 1942</span>
-            </div>
-          </div>
-          <p>Family-owned and operated since 1942. Three generations of expert plumbing and sewer service for Chicago homeowners.</p>
-          <div class="footer__license">🛡️ IDPH License #055-014914</div>
-        </div>
-        <div>
-          <h4 class="footer__heading">Services</h4>
-          <ul class="footer__links">
-            <li><a href="#services" class="footer__link">Drain Cleaning</a></li>
-            <li><a href="#services" class="footer__link">Sewer Inspection</a></li>
-            <li><a href="#services" class="footer__link">Water Heaters</a></li>
-            <li><a href="#services" class="footer__link">Leak Detection</a></li>
-            <li><a href="#services" class="footer__link">Sump Pumps</a></li>
-            <li><a href="#services" class="footer__link">Flood Control</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer__heading">Company</h4>
-          <ul class="footer__links">
-            <li><a href="#about" class="footer__link">Our Story</a></li>
-            <li><a href="#reviews" class="footer__link">Reviews</a></li>
-            <li><a href="#areas" class="footer__link">Service Areas</a></li>
-            <li><a href="#contact" class="footer__link">Contact Us</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="footer__heading">Contact</h4>
-          <ul class="footer__links">
-            <li><a href="tel:7732528688" class="footer__link">📞 (773) 252-8688</a></li>
-            <li><a href="mailto:Diversey.Plumbing@yahoo.com" class="footer__link">✉️ Email Us</a></li>
-            <li><span class="footer__link">📍 7147 W. Belmont Ave</span></li>
-            <li><span class="footer__link">🕐 Mon–Sat 8am–4pm</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <span>© 2026 Diversey Plumbing & Sewer. All rights reserved.</span>
-        <span>Serving Chicago since 1942.</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== MOBILE STICKY CTA ===== -->
-  <div class="mobile-cta">
-    <div class="mobile-cta__inner">
-      <a href="tel:7732528688" class="btn btn--phone">📞 Call Now</a>
-      <a href="#contact" class="btn btn--primary">Schedule</a>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5"/></svg></div>
+      <div class="service-name">Gas Leak Detection</div>
+      <div class="service-desc">Safe and fast detection and repair of gas leaks.</div>
     </div>
   </div>
+</section>
 
-  <script type="module" src="/src/main.js"></script>
+<section class="reviews" id="reviews">
+  <div class="section-label reveal" style="color:#63b3ed;">Customer Reviews</div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Walter is a fair, skilled and honest plumber. Highly recommend."</div>
+      <div class="review-author">— David W., Chicago</div>
+    </div>
+  </div>
+</section>
+
+<section class="reputation">
+  <div class="reputation-inner">
+    <div class="reveal">
+      <div class="rep-title">Built on <span>50 Years</span> of Trust</div>
+      <div class="rep-stats">
+        <div class="rep-stat"><div class="rep-stat-num">50+</div><div class="rep-stat-lbl">Years Experience</div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="rep-trust-title">Licensed & Bonded</div>
+      <div class="rep-trust-text">Fully insured for residential and commercial work.</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-item">
+      <button class="faq-btn">Do you offer free estimates?</button>
+      <div class="faq-answer">Yes — free quotes on all jobs. Call (773) 619-2730.</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-wrap">
+    <div class="reveal">
+      <div class="contact-heading">Request a Free Quote</div>
+      <div class="contact-detail-text">(773) 619-2730</div>
+      <div class="contact-detail-text">zunigaplumbing@yahoo.com</div>
+    </div>
+    <div class="form-card reveal">
+      <input class="form-input" type="text" placeholder="Full Name">
+      <input class="form-input" type="tel" placeholder="Phone Number">
+      <button class="form-submit">Send Request</button>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div><div class="footer-brand">Zuniga's <span>Plumbing</span> Inc.</div></div>
+  <div class="footer-info">© 2026 Zuniga's Plumbing Inc. All rights reserved.</div>
+</footer>
+
+<script>
+  const phrases=['Burst Pipe?','Clogged Drain?','Gas Leak?'];
+  let pi=0,ci=0,deleting=false;
+  const typingEl=document.getElementById('typingText');
+  function type(){
+    const word=phrases[pi];
+    if(!deleting){
+      typingEl.innerHTML=word.slice(0,ci+1)+'<span class="cursor"></span>';
+      ci++;
+      if(ci===word.length){deleting=true;setTimeout(type,1400);return;}
+      setTimeout(type,90);
+    } else {
+      typingEl.innerHTML=word.slice(0,ci-1)+'<span class="cursor"></span>';
+      ci--;
+      if(ci===0){deleting=false;pi=(pi+1)%phrases.length;setTimeout(type,300);return;}
+      setTimeout(type,45);
+    }
+  }
+  setTimeout(type,800);
+
+  const stickyBar=document.getElementById('stickyBar');
+  window.addEventListener('scroll',()=>{
+    stickyBar.classList.toggle('show', window.scrollY > 500);
+  });
+
+  const reveals=document.querySelectorAll('.reveal');
+  const revealObs=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.1});
+  reveals.forEach(el=>revealObs.observe(el));
+
+  document.querySelectorAll('.faq-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+</script>
 </body>
 </html>
