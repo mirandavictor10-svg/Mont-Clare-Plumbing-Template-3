@@ -70,6 +70,11 @@
   .review-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
   .review-badge{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:10px;padding:10px 16px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(8px);}
   .badge-logo{font-size:12px;font-weight:700;color:#fff;}
+  .badge-logo.yelp{color:#ff2d55;}
+  .badge-logo.bbb{color:#63b3ed;}
+  .badge-stars{color:#fbbf24;font-size:12px;letter-spacing:1px;}
+  .badge-rating{color:#fff;font-size:13px;font-weight:700;line-height:1;}
+  .badge-count{color:rgba(255,255,255,0.5);font-size:10px;}
   .hero-trust{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;}
   .trust-item{color:rgba(255,255,255,0.65);font-size:13px;display:flex;align-items:center;gap:6px;}
   .trust-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 2s ease-in-out infinite;}
@@ -98,21 +103,164 @@
   .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:980px;margin:0 auto;}
   .service-card{background:#fff;border:1px solid #e6ebf1;border-radius:10px;padding:28px 24px;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;cursor:pointer;}
   .service-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(5,112,222,0.12);border-color:#b3d4f7;}
-  .service-icon{width:44px;height:44px;background:#eff8ff;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+  .service-icon{width:44px;height:44px;background:#eff8ff;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:transform 0.25s,background 0.25s;}
   .service-icon svg{width:22px;height:22px;stroke:#0570de;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .service-card:hover .service-icon{transform:scale(1.12) rotate(-4deg);background:#dbeeff;}
   .service-name{font-size:15px;font-weight:600;color:#0a2540;margin-bottom:8px;}
   .service-desc{font-size:13px;color:#697386;line-height:1.55;}
+  .service-link{font-size:13px;color:#0570de;font-weight:500;margin-top:14px;display:block;opacity:0;transform:translateX(-6px);transition:opacity 0.2s,transform 0.2s;}
+  .service-card:hover .service-link{opacity:1;transform:translateX(0);}
+
+  /* WAVE DIVIDERS */
+  .wave-divider{display:block;width:100%;overflow:hidden;line-height:0;}
+  .wave-divider svg{display:block;width:100%;}
+
+  /* SERVICE AREA */
+  .service-area{background:#f6f9fc;padding:72px 40px;text-align:center;}
+  .area-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:720px;margin:0 auto;}
+  .area-pill{background:#fff;border:1px solid #e6ebf1;color:#425466;font-size:13px;font-weight:500;padding:7px 16px;border-radius:20px;transition:background 0.2s,color 0.2s,border-color 0.2s;cursor:default;}
+  .area-pill:hover{background:#eff8ff;color:#0570de;border-color:#b3d4f7;}
+  .area-pill.highlight{background:#0570de;color:#fff;border-color:#0570de;}
+
+  /* REVIEWS */
+  .reviews{background-size:300% 300%;background-image:linear-gradient(135deg,#0a2540 0%,#0d3060 30%,#0a2540 50%,#051828 80%,#0a2540 100%);animation:reviewsBgShift 12s ease infinite;padding:72px 40px;text-align:center;}
+  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:980px;margin:0 auto;}
+  .review-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:24px;text-align:left;opacity:0;transform:translateY(24px);transition:background 0.25s,transform 0.25s,border-color 0.25s;}
+  .review-card.visible{animation:cardFadeUp 0.6s ease forwards;}
+  .review-card.visible:nth-child(1){animation-delay:0.1s;}
+  .review-card.visible:nth-child(2){animation-delay:0.25s;}
+  .review-card.visible:nth-child(3){animation-delay:0.4s;}
+  .review-card:hover{background:rgba(255,255,255,0.1);transform:translateY(-4px);}
+  .review-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
+  .review-stars{color:#fbbf24;font-size:13px;letter-spacing:2px;}
+  .review-source{color:rgba(255,255,255,0.3);font-size:11px;font-weight:500;}
+  .review-text{color:rgba(255,255,255,0.8);font-size:13px;line-height:1.6;font-style:italic;margin-bottom:14px;}
+  .review-author{color:rgba(255,255,255,0.45);font-size:12px;font-weight:500;}
+
+  /* REPUTATION */
+  .reputation{background:#fff;padding:80px 40px;}
+  .reputation-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .rep-label{font-size:11px;font-weight:600;color:#0570de;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px;}
+  .rep-title{font-size:32px;font-weight:700;color:#0a2540;letter-spacing:-0.7px;line-height:1.2;margin-bottom:10px;}
+  .rep-title span{color:#0570de;}
+  .rep-accent{width:32px;height:3px;background:#0570de;border-radius:2px;margin:16px 0;}
+  .rep-intro{font-size:14px;color:#697386;line-height:1.65;margin-bottom:28px;}
+  .rep-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .rep-stat{background:#f6f9fc;border:1px solid #e6ebf1;border-radius:10px;padding:20px 18px;}
+  .rep-stat-num{font-size:32px;font-weight:700;color:#0a2540;letter-spacing:-1px;line-height:1;}
+  .rep-stat-num span{color:#0570de;}
+  .rep-stat-lbl{font-size:11px;color:#697386;margin-top:6px;line-height:1.4;}
+  .rep-trust-item{display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-bottom:1px solid #f0f4f8;}
+  .rep-trust-item:first-child{padding-top:0;}
+  .rep-trust-item:last-child{border-bottom:none;padding-bottom:0;}
+  .rep-trust-icon{width:40px;height:40px;background:#eff8ff;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s,transform 0.2s;}
+  .rep-trust-icon svg{width:19px;height:19px;stroke:#0570de;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .rep-trust-item:hover .rep-trust-icon{background:#dbeeff;transform:scale(1.08);}
+  .rep-trust-title{font-size:14px;font-weight:600;color:#0a2540;margin-bottom:4px;}
+  .rep-trust-text{font-size:12px;color:#697386;line-height:1.55;}
+
+  /* GALLERY */
+  .gallery{background:#f6f9fc;padding:72px 40px;text-align:center;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;max-width:980px;margin:0 auto;}
+  .gallery-item{border-radius:10px;overflow:hidden;position:relative;cursor:pointer;}
+  .gallery-item:hover .gallery-overlay{opacity:1;}
+  .gallery-before-after{display:grid;grid-template-columns:1fr 1fr;height:160px;}
+  .gallery-panel{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;}
+  .gallery-panel.before{background:#e8e8e8;}
+  .gallery-panel.after{background:#dbeeff;}
+  .gallery-panel svg{stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .gallery-divider{position:absolute;top:0;left:50%;width:2px;height:calc(100% - 36px);background:#fff;z-index:2;}
+  .gallery-label{font-size:10px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;}
+  .gallery-panel.before .gallery-label{color:#999;}
+  .gallery-panel.after .gallery-label{color:#0570de;}
+  .gallery-overlay{position:absolute;top:0;left:0;right:0;bottom:36px;background:rgba(5,112,222,0.85);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;}
+  .gallery-overlay span{color:#fff;font-size:13px;font-weight:600;}
+  .gallery-caption{padding:10px 14px;background:#fff;font-size:12px;color:#697386;}
+
+  /* FAQ */
+  .faq{background:#f6f9fc;padding:72px 40px;}
+  .faq-inner{max-width:700px;margin:0 auto;}
+  .faq-header{text-align:center;margin-bottom:40px;}
+  .faq-lbl{font-size:11px;font-weight:600;color:#0570de;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px;}
+  .faq-title{font-size:32px;font-weight:700;color:#0a2540;letter-spacing:-0.6px;margin-bottom:8px;}
+  .faq-sub{font-size:15px;color:#697386;line-height:1.6;}
+  .faq-item{border-radius:10px;margin-bottom:10px;overflow:hidden;}
+  .faq-item:last-child{margin-bottom:0;}
+  .faq-btn{width:100%;text-align:left;border:1px solid #c8d0da;border-radius:10px;padding:18px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:'Inter',sans-serif;background:#ffffff;transition:background 0.2s,border-color 0.2s;}
+  .faq-q-text{font-size:15px;font-weight:550;font-family:'Inter',sans-serif;color:#000000;pointer-events:none;}
+  .faq-icon{width:26px;height:26px;background:#eef2f7;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;pointer-events:none;}
+  .faq-icon svg{width:13px;height:13px;stroke:#0570de;stroke-width:2.5;fill:none;transition:transform 0.3s;pointer-events:none;}
+  .faq-item.open .faq-btn{border-color:#0570de;background:#ffffff;}
+  .faq-item.open .faq-icon svg{transform:rotate(45deg);}
+  .faq-body{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+  .faq-item.open .faq-body{max-height:140px;}
+  .faq-answer{padding:12px 20px 18px;font-size:14px;color:#333;line-height:1.7;border-top:1px solid #eef1f5;background:#fff;border-left:1px solid #0570de;border-right:1px solid #0570de;border-bottom:1px solid #0570de;border-radius:0 0 10px 10px;margin-top:-1px;}
+
+  /* CONTACT */
+  .contact{background:#0a2540;padding:72px 40px;}
+  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:960px;margin:0 auto;align-items:start;}
+  .contact-heading{font-size:32px;font-weight:700;color:#fff;letter-spacing:-0.6px;margin-bottom:12px;}
+  .contact-sub{color:rgba(255,255,255,0.6);font-size:15px;margin-bottom:32px;}
+  .contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .contact-detail-icon{width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .contact-detail-icon svg{width:16px;height:16px;stroke:#63b3ed;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+  .contact-detail-label{font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:2px;}
+  .contact-detail-text{font-size:14px;color:rgba(255,255,255,0.75);}
+  .form-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:30px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+  .form-group{margin-bottom:12px;}
+  .form-label{font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);margin-bottom:6px;display:block;}
+  .form-input{width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:7px;padding:11px 14px;font-size:14px;color:#fff;font-family:'Inter',sans-serif;transition:border-color 0.2s,background 0.2s;outline:none;}
+  .form-input::placeholder{color:rgba(255,255,255,0.3);}
+  .form-input:focus{border-color:#0570de;background:rgba(255,255,255,0.12);}
+  textarea.form-input{resize:vertical;min-height:96px;}
+  .form-submit{width:100%;background:#0570de;color:#fff;font-size:15px;font-weight:600;padding:14px;border-radius:7px;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;margin-top:4px;}
+  .form-submit:hover{background:#0461c7;transform:translateY(-1px);}
+  .form-note{font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:10px;}
+
+  /* CTA BANNER */
+  .cta-banner{background-size:300% 300%;background-image:linear-gradient(135deg,#0570de,#0a2540,#0570de);animation:gradientShift 6s ease infinite;padding:64px 40px;text-align:center;}
+  .cta-banner h2{color:#fff;font-size:32px;font-weight:700;letter-spacing:-0.6px;margin-bottom:10px;}
+  .cta-banner p{color:rgba(255,255,255,0.7);font-size:16px;margin-bottom:22px;}
+  .cta-phone{color:#fff;font-size:28px;font-weight:700;letter-spacing:-0.5px;display:block;margin-bottom:8px;}
+  .cta-sub{color:rgba(255,255,255,0.5);font-size:13px;margin-bottom:32px;}
+  .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-white{background:#fff;color:#0a2540;font-size:15px;font-weight:600;padding:14px 32px;border-radius:6px;border:none;cursor:pointer;transition:transform 0.15s,box-shadow 0.2s;}
+  .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.25);}
+  .btn-outline-white{background:transparent;color:#fff;font-size:15px;font-weight:500;padding:14px 32px;border-radius:6px;border:1.5px solid rgba(255,255,255,0.4);cursor:pointer;transition:background 0.2s,transform 0.15s;}
+  .btn-outline-white:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px);}
+
+  /* FOOTER */
+  .footer{background:#0a2540;border-top:1px solid rgba(255,255,255,0.08);padding:40px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px;}
+  .footer-brand{color:#fff;font-size:15px;font-weight:700;}
+  .footer-brand span{color:#63b3ed;}
+  .footer-info{color:rgba(255,255,255,0.4);font-size:13px;margin-top:8px;line-height:2.0;}
+  .footer-cols{display:flex;gap:52px;flex-wrap:wrap;}
+  .footer-col-title{color:rgba(255,255,255,0.85);font-size:12px;font-weight:600;margin-bottom:12px;letter-spacing:0.3px;}
+  .footer-col-link{color:rgba(255,255,255,0.4);font-size:12px;display:block;margin-bottom:7px;cursor:pointer;text-decoration:none;transition:color 0.2s;}
+  .footer-col-link:hover{color:rgba(255,255,255,0.8);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:18px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;background:#0a2540;}
+  .footer-bottom p{color:rgba(255,255,255,0.25);font-size:11px;}
+
+  /* SCROLL REVEAL */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
   .reveal.visible{opacity:1;transform:translateY(0);}
 
+  /* RESPONSIVE */
   @media(max-width:768px){
     .nav-links{display:none;}
+    .hero-typing,.hero-static{font-size:32px;}
     .reputation-inner,.contact-wrap{grid-template-columns:1fr;}
+    .stats{flex-wrap:wrap;gap:24px;}
+    .stat{border-right:none;padding:0 20px;}
+    .footer{flex-direction:column;}
+    .footer-cols{gap:28px;}
   }
 </style>
 </head>
 <body>
 
+<!-- STICKY CALL BAR -->
 <div class="sticky-bar" id="stickyBar">
   <div class="sticky-bar-left">Need a plumber? <span>We call back within 15 minutes</span></div>
   <div style="display:flex;align-items:center;gap:12px;">
@@ -121,6 +269,7 @@
   </div>
 </div>
 
+<!-- NAV -->
 <nav class="nav">
   <div class="nav-logo">
     <div class="nav-logo-icon">
@@ -138,28 +287,72 @@
   <button class="nav-cta">(773) 619-2730</button>
 </nav>
 
+<!-- HERO -->
 <section class="hero" id="hero">
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
   <div class="hero-badge anim-fade-in d1">★ Serving Chicago for 50+ Years</div>
   <div class="hero-typing-wrap anim-fade-up d2"><div class="hero-typing" id="typingText"></div></div>
   <div class="hero-static anim-fade-up d3">We Can Fix That.</div>
-  <p class="hero-sub anim-fade-up d3">Full service plumbing and heating for residential and commercial properties in Chicago.</p>
+  <p class="hero-sub anim-fade-up d3">Full service plumbing and heating for residential and commercial properties in Chicago. Licensed, bonded, and insured.</p>
+  <div class="hero-promise anim-fade-up d3">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+    We call back within 15 minutes · Same-day appointments available
+  </div>
+  <p class="hero-location anim-fade-up d3">Serving <span>Chicago</span>, Berwyn, Oak Park, Evanston & suburbs</p>
   <div class="hero-ctas anim-fade-up d4">
     <button class="btn-primary">Get a Free Quote</button>
+    <button class="btn-secondary">View All Services</button>
   </div>
+  <div class="review-badges anim-fade-in d5">
+    <div class="review-badge"><div><div class="badge-logo">G Google</div><div class="badge-stars">★★★★★</div></div><div><div class="badge-rating">4.9</div><div class="badge-count">74 reviews</div></div></div>
+    <div class="review-badge"><div><div class="badge-logo yelp">★ Yelp</div><div class="badge-stars">★★★★★</div></div><div><div class="badge-rating">4.8</div><div class="badge-count">42 reviews</div></div></div>
+    <div class="review-badge"><div><div class="badge-logo bbb">BBB</div><div style="color:#fbbf24;font-size:11px;font-weight:700;">A+ Rating</div></div><div><div class="badge-rating" style="font-size:12px;">Accredited</div><div class="badge-count">Since 2006</div></div></div>
+  </div>
+  <div class="hero-trust anim-fade-in d5">
+    <span class="trust-item"><span class="trust-dot"></span>Licensed & Insured</span>
+    <span class="trust-item"><span class="trust-dot" style="animation-delay:0.3s"></span>Same-Day Service</span>
+    <span class="trust-item"><span class="trust-dot" style="animation-delay:0.6s"></span>Satisfaction Guaranteed</span>
+    <span class="trust-item"><span class="trust-dot" style="animation-delay:0.9s"></span>Residential & Commercial</span>
+  </div>
+  <div class="hero-wave"><svg viewBox="0 0 1200 80" preserveAspectRatio="none" height="60"><path d="M0,40 C200,0 400,80 600,40 C800,0 1000,80 1200,40 L1200,80 L0,80 Z" fill="#0a2540"/></svg></div>
 </section>
 
+<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
-    <span class="ticker-item">Drain Cleaning · Sewer Line Replacement · Gas Leak Detection · Frozen Pipe Repair · Kitchen Remodeling · </span>
-    <span class="ticker-item">Drain Cleaning · Sewer Line Replacement · Gas Leak Detection · Frozen Pipe Repair · Kitchen Remodeling · </span>
+    <span class="ticker-item">Drain Cleaning <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Sewer Line Replacement <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Gas Leak Detection <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Frozen Pipe Repair <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Sump & Ejector Pumps <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Video Camera Inspection <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Kitchen & Bath Remodeling <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Water Pressure Boost <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Power Rodding <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Grease Trap Cleaning <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Drain Cleaning <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Sewer Line Replacement <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Gas Leak Detection <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Frozen Pipe Repair <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Sump & Ejector Pumps <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Video Camera Inspection <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Kitchen & Bath Remodeling <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Water Pressure Boost <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Power Rodding <span class="ticker-sep">·</span></span>
+    <span class="ticker-item">Grease Trap Cleaning <span class="ticker-sep">·</span></span>
   </div>
 </div>
 
-<div class="stats">
-  <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Years in Business</div></div>
-  <div class="stat"><div class="stat-num">A+</div><div class="stat-label">BBB Rating</div></div>
+<!-- STATS -->
+<div class="stats" id="stats">
+  <div class="stat"><div class="stat-num" id="c1" data-target="50" data-suffix="+">0+</div><div class="stat-label">Years in Business</div></div>
+  <div class="stat"><div class="stat-num" style="color:#0570de">A+</div><div class="stat-label">BBB Rating</div></div>
+  <div class="stat"><div class="stat-num" id="c2" data-target="200" data-suffix="+">0+</div><div class="stat-label">Happy Customers</div></div>
+  <div class="stat"><div class="stat-num" id="c3" data-target="15" data-suffix="min">0min</div><div class="stat-label">Avg. Callback Time</div></div>
 </div>
 
+<!-- SERVICES -->
 <section class="section" id="services" style="text-align:center;">
   <div class="section-label reveal">What We Do</div>
   <div class="section-title reveal">Full Service Plumbing & Heating</div>
@@ -168,33 +361,242 @@
     <div class="service-card reveal">
       <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
       <div class="service-name">Drain Cleaning</div>
-      <div class="service-desc">Power rodding, hydro jetting, and full drain cleaning for all blockages.</div>
+      <div class="service-desc">Power rodding, hydro jetting, and full drain cleaning for all blockages in showers, sinks, and floor drains.</div>
+      <a class="service-link">Get a free quote →</a>
     </div>
     <div class="service-card reveal">
-      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5"/></svg></div>
+      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12M12 12C12 12 8 10 8 6a4 4 0 0 1 8 0c0 4-4 6-4 6z"/><path d="M8 22h8"/><path d="M5 19h14"/></svg></div>
+      <div class="service-name">Faucet & Toilet Repair</div>
+      <div class="service-desc">Fast diagnosis and repair of leaky faucets, running toilets, and fixture replacements for kitchens and bathrooms.</div>
+      <a class="service-link">Book appointment →</a>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="service-name">Sewer Line Replacement</div>
+      <div class="service-desc">Full sewer line replacement, underground repair, water main installation, and video camera sewer inspection.</div>
+      <a class="service-link">Learn more →</a>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>
       <div class="service-name">Gas Leak Detection</div>
-      <div class="service-desc">Safe and fast detection and repair of gas leaks.</div>
+      <div class="service-desc">Don't wait on a gas leak. Our team handles detection, repair, and violation correcting quickly and safely.</div>
+      <a class="service-link">Emergency line →</a>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-2.5 3.5-1 6.5 1 8.5-1-.5-2.5-1.5-3-3.5-.5 1.5-.5 3-.5 3.5C9.5 16.5 10.5 18 12 22"/></svg></div>
+      <div class="service-name">Sump & Ejector Pumps</div>
+      <div class="service-desc">Installation, repair, and overhead sewer systems to protect your Chicago basement from flooding.</div>
+      <a class="service-link">Get a quote →</a>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <div class="service-name">Kitchen & Bath Remodeling</div>
+      <div class="service-desc">Full plumbing for bathroom and kitchen remodels, water pressure boosts, and appliance hookups.</div>
+      <a class="service-link">Start a project →</a>
     </div>
   </div>
 </section>
 
-<section class="contact" id="contact" style="background:#0a2540;padding:72px 40px;color:#fff;text-align:center;">
+<div class="wave-divider" style="background:#fff;"><svg viewBox="0 0 1200 60" preserveAspectRatio="none" height="48"><path d="M0,30 C300,60 900,0 1200,30 L1200,60 L0,60 Z" fill="#f6f9fc"/></svg></div>
+
+<!-- SERVICE AREA -->
+<section class="service-area" id="area">
+  <div class="section-label reveal" style="text-align:center;">Where We Work</div>
+  <div class="section-title reveal" style="text-align:center;">Serving Chicago & Suburbs</div>
+  <p class="section-sub reveal" style="margin:0 auto 36px;text-align:center;">We cover the entire Chicago metro. If you're nearby, we can be there.</p>
+  <div class="area-grid reveal">
+    <div class="area-pill highlight">Chicago</div>
+    <div class="area-pill">Berwyn</div><div class="area-pill">Oak Park</div><div class="area-pill">Evanston</div>
+    <div class="area-pill">Cicero</div><div class="area-pill">Maywood</div><div class="area-pill">Harvey</div>
+    <div class="area-pill">Hillside</div><div class="area-pill">Broadview</div><div class="area-pill">Forest Park</div>
+    <div class="area-pill">River Grove</div><div class="area-pill">Lyons</div><div class="area-pill">Bridgeview</div>
+    <div class="area-pill">Calumet City</div><div class="area-pill">South Holland</div><div class="area-pill">Homewood</div>
+    <div class="area-pill">Evergreen Park</div><div class="area-pill">Chicago Ridge</div><div class="area-pill">Worth</div>
+    <div class="area-pill">Hazel Crest</div>
+  </div>
+</section>
+
+<div class="wave-divider" style="background:#f6f9fc;"><svg viewBox="0 0 1200 60" preserveAspectRatio="none" height="48"><path d="M0,0 C400,60 800,0 1200,40 L1200,60 L0,60 Z" fill="#0a2540"/></svg></div>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="section-label reveal" style="color:#63b3ed;">Customer Reviews</div>
+  <div class="section-title reveal" style="color:#fff;margin-bottom:8px;">What Chicago Homeowners Say</div>
+  <p class="reveal" style="color:rgba(255,255,255,0.55);font-size:14px;margin-bottom:44px;">Real feedback from real customers across Chicago and the suburbs.</p>
+  <div class="reviews-grid" id="reviewsGrid">
+    <div class="review-card">
+      <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-source">Google</div></div>
+      <div class="review-text">"Walter is a fair, skilled and honest plumber. He found me a great price and I would recommend him to anyone."</div>
+      <div class="review-author">— David W., Chicago</div>
+    </div>
+    <div class="review-card">
+      <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-source">Networx</div></div>
+      <div class="review-text">"Asked for photos for an accurate quote and completed the job same day. I will use them again for all my plumbing needs!"</div>
+      <div class="review-author">— Verified Customer</div>
+    </div>
+    <div class="review-card">
+      <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-source">BBB</div></div>
+      <div class="review-text">"Friendly, reasonable, and honest! Prompt and professional. Explained everything in detail. Excellent licensed plumbers."</div>
+      <div class="review-author">— Verified Customer, Chicago</div>
+    </div>
+  </div>
+</section>
+
+<div class="wave-divider" style="background:#0a2540;"><svg viewBox="0 0 1200 60" preserveAspectRatio="none" height="48"><path d="M0,40 C300,0 900,60 1200,20 L1200,60 L0,60 Z" fill="#fff"/></svg></div>
+
+<!-- REPUTATION -->
+<section class="reputation" id="about">
+  <div class="reputation-inner">
+    <div class="reveal">
+      <div class="rep-label">Why Zuniga's</div>
+      <div class="rep-title">Built on <span>50 Years</span> of Trust</div>
+      <div class="rep-accent"></div>
+      <p class="rep-intro">Chicago's go-to plumber since 1975 — not because of marketing, because of results. Every job, every time.</p>
+      <div class="rep-stats">
+        <div class="rep-stat"><div class="rep-stat-num" id="rs1" data-target="50" data-suffix="+">0+</div><div class="rep-stat-lbl">Years serving Chicago</div></div>
+        <div class="rep-stat"><div class="rep-stat-num" id="rs2" data-target="200" data-suffix="+">0+</div><div class="rep-stat-lbl">5-star reviews</div></div>
+        <div class="rep-stat"><div class="rep-stat-num" id="rs3" data-target="15" data-suffix="min">0min</div><div class="rep-stat-lbl">Avg. callback time</div></div>
+        <div class="rep-stat"><div class="rep-stat-num"><span>A+</span></div><div class="rep-stat-lbl">BBB rating</div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="rep-trust-item"><div class="rep-trust-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="rep-trust-title">Licensed & Bonded</div><div class="rep-trust-text">City & State licensed. Fully insured for residential and commercial.</div></div></div>
+      <div class="rep-trust-item"><div class="rep-trust-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="rep-trust-title">Same-Day Service</div><div class="rep-trust-text">Trucks stocked daily. Most jobs done in one visit.</div></div></div>
+      <div class="rep-trust-item"><div class="rep-trust-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="rep-trust-title">Honest Pricing</div><div class="rep-trust-text">Free quotes. No hidden fees. No surprises.</div></div></div>
+      <div class="rep-trust-item"><div class="rep-trust-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><div class="rep-trust-title">Owner-Operated</div><div class="rep-trust-text">Walter Zuniga personally oversees every job.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wave-divider" style="background:#fff;"><svg viewBox="0 0 1200 60" preserveAspectRatio="none" height="48"><path d="M0,20 C400,60 800,0 1200,40 L1200,60 L0,60 Z" fill="#f6f9fc"/></svg></div>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="section-label reveal" style="text-align:center;">Our Work</div>
+  <div class="section-title reveal" style="text-align:center;">Before & After</div>
+  <p class="section-sub reveal" style="margin:0 auto 36px;text-align:center;">Real jobs, real results.</p>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item"><div class="gallery-before-after"><div class="gallery-panel before"><svg width="28" height="28" viewBox="0 0 24 24" stroke="#bbb"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><div class="gallery-label">Before</div></div><div class="gallery-panel after"><svg width="28" height="28" viewBox="0 0 24 24" stroke="#0570de"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><div class="gallery-label">After</div></div></div><div class="gallery-divider"></div><div class="gallery-overlay"><span>Drain Repair</span></div><div class="gallery-caption">Drain Repair · Bridgeview, IL</div></div>
+    <div class="gallery-item"><div class="gallery-before-after"><div class="gallery-panel before"><svg width="28" height="28" viewBox="0 0 24 24" stroke="#bbb"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div class="gallery-label">Before</div></div><div class="gallery-panel after"><svg width="28" height="28" viewBox="0 0 24 24" stroke="#0570de"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div class="gallery-label">After</div></div></div><div class="gallery-divider"></div><div class="gallery-overlay"><span>Bathroom Remodel</span></div><div class="gallery-caption">Bathroom Remodel · Chicago, IL</div></div>
+    <div class="gallery-item"><div class="gallery-before-after"><div class="gallery-panel before"><svg width="28" height="28" viewBox="0 0 24 24" stroke="#bbb"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div class="gallery-label">Before</div></div><div class="gallery-panel after"><svg width="28" height="28" viewBox="0 0 24 24" stroke="#0570de"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div class="gallery-label">After</div></div></div><div class="gallery-divider"></div><div class="gallery-overlay"><span>Sewer Line</span></div><div class="gallery-caption">Sewer Line · Berwyn, IL</div></div>
+    <div class="gallery-item"><div class="gallery-before-after"><div class="gallery-panel before"><svg width="28" height="28" viewBox="0 0 24 24" stroke="#bbb"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-2.5 3.5-1 6.5 1 8.5-1-.5-2.5-1.5-3-3.5-.5 1.5-.5 3-.5 3.5C9.5 16.5 10.5 18 12 22"/></svg><div class="gallery-label">Before</div></div><div class="gallery-panel after"><svg width="28" height="28" viewBox="0 0 24 24" stroke="#0570de"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-2.5 3.5-1 6.5 1 8.5-1-.5-2.5-1.5-3-3.5-.5 1.5-.5 3-.5 3.5C9.5 16.5 10.5 18 12 22"/></svg><div class="gallery-label">After</div></div></div><div class="gallery-divider"></div><div class="gallery-overlay"><span>Sump Pump</span></div><div class="gallery-caption">Sump Pump · Oak Park, IL</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="faq-lbl">FAQ</div>
+      <div class="faq-title">Common Questions</div>
+      <p class="faq-sub">Everything you need to know before you call.</p>
+    </div>
+    <div class="faq-item"><button class="faq-btn"><span class="faq-q-text">Do you offer free estimates?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-body"><div class="faq-answer">Yes — free quotes on all jobs. Call (773) 619-2730 or fill out the contact form and we'll get back within 15 minutes.</div></div></div>
+    <div class="faq-item"><button class="faq-btn"><span class="faq-q-text">Are you licensed and insured?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-body"><div class="faq-answer">City of Chicago License: 058170465 · Illinois State License: 055031744. Fully bonded and insured for residential and commercial work.</div></div></div>
+    <div class="faq-item"><button class="faq-btn"><span class="faq-q-text">Do you offer same-day service?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-body"><div class="faq-answer">Yes. Trucks stocked daily. Most jobs are completed in a single visit. Call early for best same-day availability.</div></div></div>
+    <div class="faq-item"><button class="faq-btn"><span class="faq-q-text">What areas do you serve?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-body"><div class="faq-answer">Chicago and all surrounding suburbs — Berwyn, Oak Park, Evanston, Cicero, Maywood, Bridgeview, Calumet City, South Holland, and more.</div></div></div>
+    <div class="faq-item"><button class="faq-btn"><span class="faq-q-text">Do you handle residential and commercial?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-body"><div class="faq-answer">Yes — homes, commercial buildings, industrial properties, and high-rises throughout Chicago. No job too big or small.</div></div></div>
+  </div>
+</section>
+
+<div class="wave-divider" style="background:#f6f9fc;"><svg viewBox="0 0 1200 60" preserveAspectRatio="none" height="48"><path d="M0,20 C400,60 800,0 1200,40 L1200,60 L0,60 Z" fill="#0a2540"/></svg></div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
   <div class="contact-wrap">
     <div class="reveal">
-      <div class="contact-heading" style="font-size:32px;font-weight:700;margin-bottom:12px;">Request a Free Quote</div>
-      <div class="contact-detail-text" style="font-size:24px;font-weight:700;color:#63b3ed;">(773) 619-2730</div>
-      <div class="contact-detail-text" style="font-size:14px;color:rgba(255,255,255,0.6);margin-top:8px;">zunigaplumbing@yahoo.com</div>
+      <div class="section-label" style="color:#63b3ed;">Get In Touch</div>
+      <div class="contact-heading">Request a Free Quote</div>
+      <p class="contact-sub">Fill out the form and we'll call back within 15 minutes. Or call us directly.</p>
+      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-text">(773) 619-2730</div></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-detail-label">Email</div><div class="contact-detail-text">zunigaplumbing@yahoo.com</div></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-detail-label">Address</div><div class="contact-detail-text">7253 S. Green Street, Chicago, IL 60621</div></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="contact-detail-label">Hours</div><div class="contact-detail-text">Mon–Fri: 8:00am – 5:00pm</div></div></div>
+    </div>
+    <div class="form-card reveal">
+      <div class="form-row">
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">First Name</label><input class="form-input" type="text" placeholder="First name"></div>
+        <div class="form-group" style="margin-bottom:0;"><label class="form-label">Last Name</label><input class="form-input" type="text" placeholder="Last name"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" type="tel" placeholder="(773) 000-0000"></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="you@email.com"></div>
+      <div class="form-group">
+        <label class="form-label">Service Needed</label>
+        <select class="form-input" style="cursor:pointer;">
+          <option>Select a service...</option>
+          <option>Drain Cleaning</option>
+          <option>Faucet & Toilet Repair</option>
+          <option>Sewer Line Replacement</option>
+          <option>Gas Leak Detection</option>
+          <option>Sump & Ejector Pumps</option>
+          <option>Kitchen & Bath Remodeling</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Describe the Issue</label><textarea class="form-input" placeholder="Tell us what's going on..."></textarea></div>
+      <button class="form-submit">Send Request — We'll Call You Back</button>
+      <p class="form-note">No spam. We'll only contact you about your request.</p>
     </div>
   </div>
 </section>
 
-<footer class="footer" style="background:#0a2540;border-top:1px solid rgba(255,255,255,0.08);padding:40px;display:flex;justify-content:space-between;color:#fff;">
-  <div class="footer-brand" style="font-weight:700;">Zuniga's <span>Plumbing</span> Inc.</div>
-  <div class="footer-info" style="color:rgba(255,255,255,0.4);font-size:13px;">© 2026 Zuniga's Plumbing Inc. All rights reserved.</div>
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Ready to Fix It Right?</h2>
+  <p>Whether it's a leaky faucet or a plumbing emergency — we're here.</p>
+  <span class="cta-phone">(773) 619-2730</span>
+  <p class="cta-sub">Mon–Fri 8:00am–5:00pm · zunigaplumbing@yahoo.com</p>
+  <div class="cta-btns">
+    <button class="btn-white">Call Now</button>
+    <button class="btn-outline-white">Request Free Quote</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-brand">Zuniga's <span>Plumbing</span> Inc.</div>
+    <div class="footer-info">
+      7253 S. Green Street<br>
+      Chicago, IL 60621<br>
+      (773) 619-2730<br>
+      zunigaplumbing@yahoo.com
+    </div>
+  </div>
+  <div class="footer-cols">
+    <div>
+      <div class="footer-col-title">Services</div>
+      <a class="footer-col-link" href="#services">Drain Cleaning</a>
+      <a class="footer-col-link" href="#services">Sewer Line Repair</a>
+      <a class="footer-col-link" href="#services">Gas Leak Detection</a>
+      <a class="footer-col-link" href="#services">Sump Pumps</a>
+      <a class="footer-col-link" href="#services">Frozen Pipe Repair</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <a class="footer-col-link" href="#about">About Us</a>
+      <a class="footer-col-link" href="#reviews">Reviews</a>
+      <a class="footer-col-link" href="#gallery">Gallery</a>
+      <a class="footer-col-link" href="#contact">Contact</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Service Area</div>
+      <a class="footer-col-link" href="#area">Chicago</a>
+      <a class="footer-col-link" href="#area">Berwyn</a>
+      <a class="footer-col-link" href="#area">Oak Park</a>
+      <a class="footer-col-link" href="#area">Evanston</a>
+      <a class="footer-col-link" href="#area">All Suburbs</a>
+    </div>
+  </div>
 </footer>
+<div class="footer-bottom">
+  <p>© 2026 Zuniga's Plumbing Inc. All rights reserved.</p>
+  <p style="color:rgba(255,255,255,0.18);font-size:11px;">City License: 058170465 · State License: 055031744</p>
+</div>
 
 <script>
-  const phrases=['Burst Pipe?','Clogged Drain?','Gas Leak?'];
+  // Typing animation
+  const phrases=['Burst Pipe?','Clogged Drain?','Gas Leak?','Frozen Pipes?','Sewer Backup?'];
   let pi=0,ci=0,deleting=false;
   const typingEl=document.getElementById('typingText');
   function type(){
@@ -213,21 +615,95 @@
   }
   setTimeout(type,800);
 
+  // Sticky bar
   const stickyBar=document.getElementById('stickyBar');
+  const heroEl=document.getElementById('hero');
   window.addEventListener('scroll',()=>{
-    stickyBar.classList.toggle('show', window.scrollY > 500);
+    stickyBar.classList.toggle('show', window.scrollY > heroEl.offsetTop + heroEl.offsetHeight - 80);
   });
 
+  // Count up
+  function countUp(el,target,suffix){
+    let val=0;
+    const inc=target/(1800/16);
+    const t=setInterval(()=>{
+      val+=inc;
+      if(val>=target){val=target;clearInterval(t);}
+      el.textContent=Math.floor(val)+suffix;
+    },16);
+  }
+
+  // Scroll reveal
   const reveals=document.querySelectorAll('.reveal');
   const revealObs=new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
+    entries.forEach((entry,i)=>{
       if(entry.isIntersecting){
-        entry.target.classList.add('visible');
+        setTimeout(()=>{
+          entry.target.classList.add('visible');
+          entry.target.querySelectorAll('[data-target]').forEach(el=>{
+            if(el.dataset.suffix) countUp(el,parseInt(el.dataset.target),el.dataset.suffix);
+          });
+        },i*70);
         revealObs.unobserve(entry.target);
       }
     });
-  },{threshold:0.1});
+  },{threshold:0.08});
   reveals.forEach(el=>revealObs.observe(el));
+
+  // Stats count up
+  const statsEl=document.getElementById('stats');
+  const statsObs=new IntersectionObserver((entries)=>{
+    if(entries[0].isIntersecting){
+      document.querySelectorAll('#stats [data-target]').forEach(el=>{
+        if(el.dataset.suffix) countUp(el,parseInt(el.dataset.target),el.dataset.suffix);
+      });
+      statsObs.disconnect();
+    }
+  },{threshold:0.4});
+  statsObs.observe(statsEl);
+
+  // Review cards stagger fade up
+  const reviewCards=document.querySelectorAll('.review-card');
+  const reviewObs=new IntersectionObserver((entries)=>{
+    if(entries[0].isIntersecting){
+      reviewCards.forEach(card=>card.classList.add('visible'));
+      reviewObs.disconnect();
+    }
+  },{threshold:0.2});
+  reviewObs.observe(document.getElementById('reviewsGrid'));
+
+  // FAQ blue hover (JS-controlled)
+  document.querySelectorAll('.faq-btn').forEach(btn=>{
+    const text=btn.querySelector('.faq-q-text');
+    const icon=btn.querySelector('.faq-icon');
+    const svg=icon.querySelector('svg');
+    const item=btn.closest('.faq-item');
+    btn.addEventListener('mouseenter',()=>{
+      if(item.classList.contains('open'))return;
+      btn.style.background='#0570de';btn.style.borderColor='#0570de';
+      text.style.color='#ffffff';icon.style.background='rgba(255,255,255,0.2)';svg.style.stroke='#ffffff';
+    });
+    btn.addEventListener('mouseleave',()=>{
+      if(item.classList.contains('open'))return;
+      btn.style.background='#ffffff';btn.style.borderColor='#c8d0da';
+      text.style.color='#000000';icon.style.background='#eef2f7';svg.style.stroke='#0570de';
+    });
+    btn.addEventListener('click',()=>{
+      const open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{
+        i.classList.remove('open');
+        const b=i.querySelector('.faq-btn');const t=i.querySelector('.faq-q-text');
+        const ic=i.querySelector('.faq-icon');const s=ic.querySelector('svg');
+        b.style.background='#ffffff';b.style.borderColor='#c8d0da';
+        t.style.color='#000000';ic.style.background='#eef2f7';s.style.stroke='#0570de';
+      });
+      if(!open){
+        item.classList.add('open');
+        btn.style.background='#ffffff';btn.style.borderColor='#0570de';
+        text.style.color='#000000';icon.style.background='#eef2f7';svg.style.stroke='#0570de';
+      }
+    });
+  });
 </script>
 </body>
 </html>
