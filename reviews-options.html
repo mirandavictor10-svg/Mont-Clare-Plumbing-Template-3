@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews Section — 3 Options</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',-apple-system,sans-serif;background:#fff;}
+
+  /* NAV BETWEEN OPTIONS */
+  .options-nav{background:#0a2540;padding:16px 40px;display:flex;gap:16px;align-items:center;position:sticky;top:0;z-index:100;}
+  .options-nav span{color:rgba(255,255,255,0.5);font-size:13px;}
+  .opt-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);font-size:13px;font-weight:500;padding:7px 18px;border-radius:6px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+  .opt-btn:hover,.opt-btn.active{background:#0570de;border-color:#0570de;color:#fff;}
+
+  /* ─────────────────────────────────────────
+     OPTION 1 — DOUBLE MARQUEE (left + right)
+  ───────────────────────────────────────── */
+  @keyframes marqueeLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @keyframes marqueeRight{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+  @keyframes reviewsBgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+  .opt1{background-size:300% 300%;background-image:linear-gradient(135deg,#0a2540 0%,#0d3060 30%,#0a2540 50%,#051828 80%,#0a2540 100%);animation:reviewsBgShift 12s ease infinite;padding:72px 0;text-align:center;}
+  .opt1-header{padding:0 40px 44px;}
+  .opt1-label{font-size:11px;font-weight:600;color:#63b3ed;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px;}
+  .opt1-title{font-size:34px;font-weight:700;color:#fff;letter-spacing:-0.8px;margin-bottom:10px;}
+  .opt1-sub{color:rgba(255,255,255,0.5);font-size:14px;}
+
+  .marquee-wrap{position:relative;overflow:hidden;margin-bottom:16px;}
+  .marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none;}
+  .marquee-wrap::before{left:0;background:linear-gradient(to right,#0a2540 0%,transparent 100%);}
+  .marquee-wrap::after{right:0;background:linear-gradient(to left,#0a2540 0%,transparent 100%);}
+  .marquee-track{display:flex;width:max-content;animation:marqueeLeft 38s linear infinite;}
+  .marquee-track.reverse{animation:marqueeRight 42s linear infinite;}
+  .marquee-wrap:hover .marquee-track{animation-play-state:paused;}
+
+  .mq-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:20px 22px;text-align:left;width:290px;flex-shrink:0;margin-right:14px;transition:background 0.2s,border-color 0.2s;}
+  .mq-card:hover{background:rgba(255,255,255,0.1);border-color:rgba(99,179,237,0.3);}
+  .mq-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .mq-stars{color:#fbbf24;font-size:12px;letter-spacing:2px;}
+  .mq-source{color:rgba(255,255,255,0.3);font-size:11px;font-weight:500;}
+  .mq-text{color:rgba(255,255,255,0.8);font-size:13px;line-height:1.6;font-style:italic;margin-bottom:12px;}
+  .mq-author{color:rgba(255,255,255,0.4);font-size:12px;}
+
+  /* ─────────────────────────────────────────
+     OPTION 2 — FEATURED + GRID (light bg)
+  ───────────────────────────────────────── */
+  .opt2{background:#f6f9fc;padding:72px 40px;text-align:center;}
+  .opt2-label{font-size:11px;font-weight:600;color:#0570de;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px;}
+  .opt2-title{font-size:34px;font-weight:700;color:#0a2540;letter-spacing:-0.8px;margin-bottom:10px;}
+  .opt2-sub{color:#697386;font-size:14px;margin-bottom:44px;}
+
+  .opt2-featured{background:#0a2540;border-radius:14px;padding:36px 44px;max-width:720px;margin:0 auto 36px;position:relative;overflow:hidden;text-align:left;}
+  .opt2-featured::before{content:'"';position:absolute;top:-20px;left:20px;font-size:140px;color:rgba(255,255,255,0.04);font-family:Georgia,serif;line-height:1;}
+  .opt2-feat-stars{color:#fbbf24;font-size:14px;letter-spacing:3px;margin-bottom:14px;}
+  .opt2-feat-text{color:rgba(255,255,255,0.9);font-size:18px;line-height:1.65;font-style:italic;margin-bottom:20px;}
+  .opt2-feat-footer{display:flex;align-items:center;justify-content:space-between;}
+  .opt2-feat-author{color:rgba(255,255,255,0.5);font-size:13px;}
+  .opt2-feat-source{background:#0570de;color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:4px;}
+
+  .opt2-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:980px;margin:0 auto;}
+  .opt2-card{background:#fff;border:1px solid #e6ebf1;border-radius:10px;padding:22px;text-align:left;transition:box-shadow 0.2s,transform 0.2s;}
+  .opt2-card:hover{box-shadow:0 8px 32px rgba(5,112,222,0.1);transform:translateY(-4px);}
+  .opt2-card-top{display:flex;justify-content:space-between;margin-bottom:10px;}
+  .opt2-card-stars{color:#fbbf24;font-size:12px;letter-spacing:2px;}
+  .opt2-card-src{color:#697386;font-size:11px;font-weight:500;}
+  .opt2-card-text{color:#425466;font-size:13px;line-height:1.6;font-style:italic;margin-bottom:12px;}
+  .opt2-card-author{color:#a0aab4;font-size:12px;}
+
+  /* ─────────────────────────────────────────
+     OPTION 3 — CAROUSEL SLIDER
+  ───────────────────────────────────────── */
+  @keyframes opt3BgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .opt3{background-size:300% 300%;background-image:linear-gradient(135deg,#0a2540 0%,#0d3060 30%,#0a2540 50%,#051828 80%,#0a2540 100%);animation:opt3BgShift 12s ease infinite;padding:72px 40px;text-align:center;}
+  .opt3-label{font-size:11px;font-weight:600;color:#63b3ed;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px;}
+  .opt3-title{font-size:34px;font-weight:700;color:#fff;letter-spacing:-0.8px;margin-bottom:10px;}
+  .opt3-sub{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:44px;}
+
+  .slider-outer{position:relative;max-width:980px;margin:0 auto;}
+  .slider-viewport{overflow:hidden;border-radius:12px;}
+  .slider-track{display:flex;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);}
+  .slide{min-width:calc(33.333% - 10px);margin-right:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:28px 24px;text-align:left;flex-shrink:0;transition:background 0.2s,border-color 0.2s;}
+  .slide.active-slide{background:rgba(255,255,255,0.12);border-color:rgba(99,179,237,0.4);}
+  .slide-stars{color:#fbbf24;font-size:13px;letter-spacing:2px;margin-bottom:10px;}
+  .slide-text{color:rgba(255,255,255,0.85);font-size:14px;line-height:1.65;font-style:italic;margin-bottom:16px;}
+  .slide-footer{display:flex;justify-content:space-between;align-items:center;}
+  .slide-author{color:rgba(255,255,255,0.45);font-size:12px;}
+  .slide-src{color:rgba(255,255,255,0.25);font-size:11px;font-weight:500;}
+
+  .slider-controls{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:32px;}
+  .slider-btn{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+  .slider-btn:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.4);}
+  .slider-dots{display:flex;gap:8px;}
+  .slider-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;transition:all 0.2s;}
+  .slider-dot.active{background:#0570de;width:22px;border-radius:4px;}
+
+  /* SECTION DIVIDERS */
+  .opt-divider{background:#1a2a3a;padding:16px 40px;text-align:center;border-top:1px solid rgba(255,255,255,0.06);}
+  .opt-divider-label{color:rgba(255,255,255,0.25);font-size:11px;letter-spacing:2px;text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<div class="options-nav">
+  <span>Reviews Options:</span>
+  <a class="opt-btn active" href="#option1">Option 1 — Double Marquee</a>
+  <a class="opt-btn" href="#option2">Option 2 — Featured + Grid</a>
+  <a class="opt-btn" href="#option3">Option 3 — Slider</a>
+</div>
+
+<!-- ═══════════════════════════════════════
+     OPTION 1 — DOUBLE MARQUEE
+════════════════════════════════════════ -->
+<div class="opt-divider" id="option1"><div class="opt-divider-label">Option 1 — Double Marquee (auto-scroll, top left · bottom right, fades on edges)</div></div>
+<section class="opt1">
+  <div class="opt1-header">
+    <div class="opt1-label">Customer Reviews</div>
+    <div class="opt1-title">What Chicago Homeowners Say</div>
+    <div class="opt1-sub">Real feedback from real customers across Chicago and the suburbs.</div>
+  </div>
+
+  <!-- ROW 1 — scrolls left -->
+  <div class="marquee-wrap" style="margin-bottom:14px;">
+    <div class="marquee-track" id="row1">
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Walter is a fair, skilled and honest plumber. He found me a great price and I would recommend him to anyone."</div><div class="mq-author">— David W., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Asked for photos for an accurate quote and completed the job same day. I will use them again for all my plumbing needs!"</div><div class="mq-author">— Verified Customer</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Friendly, reasonable, and honest! Prompt and professional. Explained everything in detail. Excellent licensed plumbers."</div><div class="mq-author">— Verified Customer, Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"They responded fast, showed up on time, and fixed the leak the same day. Highly recommend Zuniga's!"</div><div class="mq-author">— Maria L., Cicero</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"Used them for a basement flood — they were there within the hour. Amazing service and fair pricing."</div><div class="mq-author">— James R., Oak Park</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"50 years in business for a reason. Trustworthy, knowledgeable, and they stand by their work."</div><div class="mq-author">— Sandra K., Berwyn</div></div>
+      <!-- duplicate for seamless loop -->
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Walter is a fair, skilled and honest plumber. He found me a great price and I would recommend him to anyone."</div><div class="mq-author">— David W., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Asked for photos for an accurate quote and completed the job same day. I will use them again for all my plumbing needs!"</div><div class="mq-author">— Verified Customer</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Friendly, reasonable, and honest! Prompt and professional. Explained everything in detail. Excellent licensed plumbers."</div><div class="mq-author">— Verified Customer, Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"They responded fast, showed up on time, and fixed the leak the same day. Highly recommend Zuniga's!"</div><div class="mq-author">— Maria L., Cicero</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"Used them for a basement flood — they were there within the hour. Amazing service and fair pricing."</div><div class="mq-author">— James R., Oak Park</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"50 years in business for a reason. Trustworthy, knowledgeable, and they stand by their work."</div><div class="mq-author">— Sandra K., Berwyn</div></div>
+    </div>
+  </div>
+
+  <!-- ROW 2 — scrolls right -->
+  <div class="marquee-wrap">
+    <div class="marquee-track reverse" id="row2">
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"On time, professional, and cleaned up after themselves. Will call them for every plumbing issue."</div><div class="mq-author">— Tony G., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Very honest and upfront with pricing. No surprises on the bill. The work was done perfectly."</div><div class="mq-author">— Rosa M., Evanston</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Water heater went out on a Saturday morning — they had it replaced by noon. Incredible response time."</div><div class="mq-author">— Kevin D., Skokie</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"I've used Zuniga's three times now. Always the same great quality and honest service."</div><div class="mq-author">— Anna F., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Best plumbers in the city. Explained the issue clearly and fixed it faster than I expected."</div><div class="mq-author">— Michael T., River North</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"My landlord uses them for the whole building. They're the most reliable plumbers I've ever dealt with."</div><div class="mq-author">— Carlos V., Logan Square</div></div>
+      <!-- duplicate -->
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"On time, professional, and cleaned up after themselves. Will call them for every plumbing issue."</div><div class="mq-author">— Tony G., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Very honest and upfront with pricing. No surprises on the bill. The work was done perfectly."</div><div class="mq-author">— Rosa M., Evanston</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Water heater went out on a Saturday morning — they had it replaced by noon. Incredible response time."</div><div class="mq-author">— Kevin D., Skokie</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"I've used Zuniga's three times now. Always the same great quality and honest service."</div><div class="mq-author">— Anna F., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Best plumbers in the city. Explained the issue clearly and fixed it faster than I expected."</div><div class="mq-author">— Michael T., River North</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"My landlord uses them for the whole building. They're the most reliable plumbers I've ever dealt with."</div><div class="mq-author">— Carlos V., Logan Square</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     OPTION 2 — FEATURED + GRID
+════════════════════════════════════════ -->
+<div class="opt-divider" id="option2"><div class="opt-divider-label">Option 2 — Featured Quote + Card Grid (light background, static)</div></div>
+<section class="opt2">
+  <div class="opt2-label">Customer Reviews</div>
+  <div class="opt2-title">What Chicago Homeowners Say</div>
+  <div class="opt2-sub">Real feedback from real customers across Chicago and the suburbs.</div>
+
+  <div class="opt2-featured">
+    <div class="opt2-feat-stars">★★★★★</div>
+    <div class="opt2-feat-text">"Walter is a fair, skilled and honest plumber. He found me a great price and I would recommend him to anyone. 50 years in business — and you can tell why."</div>
+    <div class="opt2-feat-footer">
+      <div class="opt2-feat-author">— David W., Chicago</div>
+      <div class="opt2-feat-source">Google</div>
+    </div>
+  </div>
+
+  <div class="opt2-grid">
+    <div class="opt2-card"><div class="opt2-card-top"><div class="opt2-card-stars">★★★★★</div><div class="opt2-card-src">Networx</div></div><div class="opt2-card-text">"Asked for photos for an accurate quote and completed the job same day. I will use them again for all my plumbing needs!"</div><div class="opt2-card-author">— Verified Customer</div></div>
+    <div class="opt2-card"><div class="opt2-card-top"><div class="opt2-card-stars">★★★★★</div><div class="opt2-card-src">BBB</div></div><div class="opt2-card-text">"Friendly, reasonable, and honest! Prompt and professional. Explained everything in detail. Excellent licensed plumbers."</div><div class="opt2-card-author">— Verified Customer, Chicago</div></div>
+    <div class="opt2-card"><div class="opt2-card-top"><div class="opt2-card-stars">★★★★★</div><div class="opt2-card-src">Google</div></div><div class="opt2-card-text">"They responded fast, showed up on time, and fixed the leak the same day. Highly recommend Zuniga's!"</div><div class="opt2-card-author">— Maria L., Cicero</div></div>
+    <div class="opt2-card"><div class="opt2-card-top"><div class="opt2-card-stars">★★★★★</div><div class="opt2-card-src">Yelp</div></div><div class="opt2-card-text">"Used them for a basement flood — they were there within the hour. Amazing service and fair pricing."</div><div class="opt2-card-author">— James R., Oak Park</div></div>
+    <div class="opt2-card"><div class="opt2-card-top"><div class="opt2-card-stars">★★★★★</div><div class="opt2-card-src">Google</div></div><div class="opt2-card-text">"50 years in business for a reason. Trustworthy, knowledgeable, and they stand by their work."</div><div class="opt2-card-author">— Sandra K., Berwyn</div></div>
+    <div class="opt2-card"><div class="opt2-card-top"><div class="opt2-card-stars">★★★★★</div><div class="opt2-card-src">Google</div></div><div class="opt2-card-text">"Water heater went out on a Saturday — replaced by noon. Incredible response time and great work."</div><div class="opt2-card-author">— Kevin D., Skokie</div></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     OPTION 3 — SLIDER WITH DOTS + ARROWS
+════════════════════════════════════════ -->
+<div class="opt-divider" id="option3"><div class="opt-divider-label">Option 3 — Sliding Carousel (arrows + dot indicators, shows 3 at a time)</div></div>
+<section class="opt3">
+  <div class="opt3-label">Customer Reviews</div>
+  <div class="opt3-title">What Chicago Homeowners Say</div>
+  <div class="opt3-sub">Real feedback from real customers across Chicago and the suburbs.</div>
+
+  <div class="slider-outer">
+    <div class="slider-viewport">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide active-slide"><div class="slide-stars">★★★★★</div><div class="slide-text">"Walter is a fair, skilled and honest plumber. He found me a great price and I would recommend him to anyone."</div><div class="slide-footer"><div class="slide-author">— David W., Chicago</div><div class="slide-src">Google</div></div></div>
+        <div class="slide"><div class="slide-stars">★★★★★</div><div class="slide-text">"Asked for photos for an accurate quote and completed the job same day. Will use them again for all my plumbing needs!"</div><div class="slide-footer"><div class="slide-author">— Verified Customer</div><div class="slide-src">Networx</div></div></div>
+        <div class="slide"><div class="slide-stars">★★★★★</div><div class="slide-text">"Friendly, reasonable, and honest! Prompt and professional. Explained everything in detail. Excellent licensed plumbers."</div><div class="slide-footer"><div class="slide-author">— Verified Customer, Chicago</div><div class="slide-src">BBB</div></div></div>
+        <div class="slide"><div class="slide-stars">★★★★★</div><div class="slide-text">"They responded fast, showed up on time, and fixed the leak the same day. Highly recommend Zuniga's!"</div><div class="slide-footer"><div class="slide-author">— Maria L., Cicero</div><div class="slide-src">Google</div></div></div>
+        <div class="slide"><div class="slide-stars">★★★★★</div><div class="slide-text">"Used them for a basement flood — they were there within the hour. Amazing service and fair pricing."</div><div class="slide-footer"><div class="slide-author">— James R., Oak Park</div><div class="slide-src">Yelp</div></div></div>
+        <div class="slide"><div class="slide-stars">★★★★★</div><div class="slide-text">"50 years in business for a reason. Trustworthy, knowledgeable, and they stand by their work."</div><div class="slide-footer"><div class="slide-author">— Sandra K., Berwyn</div><div class="slide-src">Google</div></div></div>
+        <div class="slide"><div class="slide-stars">★★★★★</div><div class="slide-text">"Water heater went out on a Saturday morning — replaced by noon. Incredible response time and great craftsmanship."</div><div class="slide-footer"><div class="slide-author">— Kevin D., Skokie</div><div class="slide-src">BBB</div></div></div>
+        <div class="slide"><div class="slide-stars">★★★★★</div><div class="slide-text">"Best plumbers in the city. Explained the issue clearly and fixed it faster than I expected."</div><div class="slide-footer"><div class="slide-author">— Michael T., River North</div><div class="slide-src">Google</div></div></div>
+        <div class="slide"><div class="slide-stars">★★★★★</div><div class="slide-text">"Very honest and upfront with pricing. No surprises on the bill. The work was done perfectly."</div><div class="slide-footer"><div class="slide-author">— Rosa M., Evanston</div><div class="slide-src">Networx</div></div></div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button class="slider-btn" id="sliderPrev">&#8592;</button>
+      <div class="slider-dots" id="sliderDots"></div>
+      <button class="slider-btn" id="sliderNext">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ── SLIDER (Option 3) ──────────────────────────
+  const track = document.getElementById('sliderTrack');
+  const slides = track.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('sliderDots');
+  const totalSlides = slides.length;
+  const visible = 3;
+  const totalPages = Math.ceil(totalSlides / visible);
+  let currentPage = 0;
+
+  // build dots
+  for(let i = 0; i < totalPages; i++){
+    const d = document.createElement('div');
+    d.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsContainer.appendChild(d);
+  }
+
+  function goTo(page){
+    currentPage = (page + totalPages) % totalPages;
+    const slideWidth = slides[0].offsetWidth + 14;
+    track.style.transform = `translateX(-${currentPage * visible * slideWidth}px)`;
+    slides.forEach((s,i)=> s.classList.toggle('active-slide', i === currentPage * visible));
+    dotsContainer.querySelectorAll('.slider-dot').forEach((d,i)=> d.classList.toggle('active', i === currentPage));
+  }
+
+  document.getElementById('sliderNext').onclick = () => goTo(currentPage + 1);
+  document.getElementById('sliderPrev').onclick = () => goTo(currentPage - 1);
+
+  // auto-advance
+  setInterval(() => goTo(currentPage + 1), 5000);
+</script>
+</body>
+</html>

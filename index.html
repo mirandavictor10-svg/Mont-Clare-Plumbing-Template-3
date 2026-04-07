@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Corporate Template — Zuniga's Plumbing Inc.</title>
+<meta name="description" id="metaDescription" content="">
+<title id="pageTitle">Zuniga's Plumbing Inc. | Professional Chicago Plumbers</title>
+<script src="config.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -264,12 +266,22 @@
 </style>
 </head>
 <body>
+<script>
+// Apply page-level meta immediately (before paint)
+(function(){
+  if(!window.COMPANY) return;
+  var C = window.COMPANY;
+  document.title = C.meta.title;
+  var metaDesc = document.getElementById('metaDescription');
+  if(metaDesc) metaDesc.setAttribute('content', C.meta.description);
+})();
+</script>
 
 <!-- STICKY CALL BAR -->
 <div class="sticky-bar" id="stickyBar">
-  <div class="sticky-bar-left">Need a plumber? <span>We call back within 15 minutes</span></div>
+  <div class="sticky-bar-left">Need a plumber? <span id="stickyPromise">We call back within 15 minutes</span></div>
   <div style="display:flex;align-items:center;gap:12px;">
-    <span class="sticky-phone">(773) 619-2730</span>
+    <a class="sticky-phone" id="stickyPhone" href="tel:7736192730">(773) 619-2730</a>
     <button class="sticky-btn">Call Now</button>
   </div>
 </div>
@@ -280,7 +292,7 @@
     <div class="nav-logo-icon">
       <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
     </div>
-    <div class="nav-brand">Zuniga's <span>Plumbing</span></div>
+    <div class="nav-brand" id="navBrand">Zuniga's <span>Plumbing</span></div>
   </div>
   <div class="nav-links">
     <a class="nav-link" href="#services">Services</a>
@@ -289,27 +301,27 @@
     <a class="nav-link" href="#faq">FAQ</a>
     <a class="nav-link" href="#contact">Contact</a>
   </div>
-  <button class="nav-cta">(773) 619-2730</button>
+  <a class="nav-cta" id="navCta" href="tel:7736192730">(773) 619-2730</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-orb1"></div>
   <div class="hero-orb2"></div>
-  <div class="hero-badge anim-fade-in d1">★ Serving Chicago for 50+ Years</div>
+  <div class="hero-badge anim-fade-in d1" id="heroBadge">★ Serving Chicago for 50+ Years</div>
   <div class="hero-typing-wrap anim-fade-up d2"><div class="hero-typing" id="typingText"></div></div>
   <div class="hero-static anim-fade-up d3">We Can Fix That.</div>
-  <p class="hero-sub anim-fade-up d3">Full service plumbing and heating for residential and commercial properties in Chicago. Licensed, bonded, and insured.</p>
+  <p class="hero-sub anim-fade-up d3" id="heroSub">Full service plumbing and heating for residential and commercial properties in Chicago. Licensed, bonded, and insured.</p>
   <div class="hero-promise anim-fade-up d3">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-    We call back within 15 minutes · Same-day appointments available
+    <span id="heroPromise">We call back within 15 minutes · Same-day appointments available</span>
   </div>
-  <p class="hero-location anim-fade-up d3">Serving <span>Chicago</span>, Berwyn, Oak Park, Evanston & suburbs</p>
+  <p class="hero-location anim-fade-up d3" id="heroLocation">Serving <span>Chicago</span>, Berwyn, Oak Park, Evanston & suburbs</p>
   <div class="hero-ctas anim-fade-up d4">
     <button class="btn-primary">Get a Free Quote</button>
     <button class="btn-secondary">View All Services</button>
   </div>
-  <div class="review-badges anim-fade-in d5">
+  <div class="review-badges anim-fade-in d5" id="reviewBadges">
     <div class="review-badge"><div><div class="badge-logo">G Google</div><div class="badge-stars">★★★★★</div></div><div><div class="badge-rating">4.9</div><div class="badge-count">74 reviews</div></div></div>
     <div class="review-badge"><div><div class="badge-logo yelp">★ Yelp</div><div class="badge-stars">★★★★★</div></div><div><div class="badge-rating">4.8</div><div class="badge-count">42 reviews</div></div></div>
     <div class="review-badge"><div><div class="badge-logo bbb">BBB</div><div style="color:#fbbf24;font-size:11px;font-weight:700;">A+ Rating</div></div><div><div class="badge-rating" style="font-size:12px;">Accredited</div><div class="badge-count">Since 2006</div></div></div>
@@ -325,7 +337,7 @@
 
 <!-- TICKER -->
 <div class="ticker">
-  <div class="ticker-inner">
+  <div class="ticker-inner" id="tickerInner">
     <span class="ticker-item">Drain Cleaning <span class="ticker-sep">·</span></span>
     <span class="ticker-item">Sewer Line Replacement <span class="ticker-sep">·</span></span>
     <span class="ticker-item">Gas Leak Detection <span class="ticker-sep">·</span></span>
@@ -356,6 +368,7 @@
   <div class="stat"><div class="stat-num" id="c2" data-target="200" data-suffix="+">0+</div><div class="stat-label">Happy Customers</div></div>
   <div class="stat"><div class="stat-num" id="c3" data-target="15" data-suffix="min">0min</div><div class="stat-label">Avg. Callback Time</div></div>
 </div>
+<!-- data-target values are patched by applyConfig() before the counters fire -->
 
 <!-- SERVICES -->
 <section class="section" id="services" style="text-align:center;">
@@ -409,7 +422,7 @@
   <div class="section-label reveal" style="text-align:center;">Where We Work</div>
   <div class="section-title reveal" style="text-align:center;">Serving Chicago & Suburbs</div>
   <p class="section-sub reveal" style="margin:0 auto 36px;text-align:center;">We cover the entire Chicago metro. If you're nearby, we can be there.</p>
-  <div class="area-grid reveal">
+  <div class="area-grid reveal" id="areaGrid">
     <div class="area-pill highlight">Chicago</div>
     <div class="area-pill">Berwyn</div><div class="area-pill">Oak Park</div><div class="area-pill">Evanston</div>
     <div class="area-pill">Cicero</div><div class="area-pill">Maywood</div><div class="area-pill">Harvey</div>
@@ -431,42 +444,14 @@
     <p class="reveal" style="color:rgba(255,255,255,0.55);font-size:14px;margin-bottom:0;">Real feedback from real customers across Chicago and the suburbs.</p>
   </div>
 
-  <!-- ROW 1 — scrolls left -->
+  <!-- ROW 1 — scrolls left (populated by applyConfig) -->
   <div class="marquee-wrap" style="margin-bottom:14px;">
-    <div class="marquee-track">
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Walter is a fair, skilled and honest plumber. He found me a great price and I would recommend him to anyone."</div><div class="mq-author">— David W., Chicago</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Asked for photos for an accurate quote and completed the job same day. I will use them again for all my plumbing needs!"</div><div class="mq-author">— Verified Customer</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Friendly, reasonable, and honest! Prompt and professional. Explained everything in detail. Excellent licensed plumbers."</div><div class="mq-author">— Verified Customer, Chicago</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"They responded fast, showed up on time, and fixed the leak the same day. Highly recommend Zuniga's!"</div><div class="mq-author">— Maria L., Cicero</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"Used them for a basement flood — they were there within the hour. Amazing service and fair pricing."</div><div class="mq-author">— James R., Oak Park</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"50 years in business for a reason. Trustworthy, knowledgeable, and they stand by their work."</div><div class="mq-author">— Sandra K., Berwyn</div></div>
-      <!-- duplicate for seamless loop -->
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Walter is a fair, skilled and honest plumber. He found me a great price and I would recommend him to anyone."</div><div class="mq-author">— David W., Chicago</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Asked for photos for an accurate quote and completed the job same day. I will use them again for all my plumbing needs!"</div><div class="mq-author">— Verified Customer</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Friendly, reasonable, and honest! Prompt and professional. Explained everything in detail. Excellent licensed plumbers."</div><div class="mq-author">— Verified Customer, Chicago</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"They responded fast, showed up on time, and fixed the leak the same day. Highly recommend Zuniga's!"</div><div class="mq-author">— Maria L., Cicero</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"Used them for a basement flood — they were there within the hour. Amazing service and fair pricing."</div><div class="mq-author">— James R., Oak Park</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"50 years in business for a reason. Trustworthy, knowledgeable, and they stand by their work."</div><div class="mq-author">— Sandra K., Berwyn</div></div>
-    </div>
+    <div class="marquee-track" id="marqueeRow1"></div>
   </div>
 
-  <!-- ROW 2 — scrolls right -->
+  <!-- ROW 2 — scrolls right (populated by applyConfig) -->
   <div class="marquee-wrap">
-    <div class="marquee-track reverse">
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"On time, professional, and cleaned up after themselves. Will call them for every plumbing issue."</div><div class="mq-author">— Tony G., Chicago</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Very honest and upfront with pricing. No surprises on the bill. The work was done perfectly."</div><div class="mq-author">— Rosa M., Evanston</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Water heater went out on a Saturday morning — they had it replaced by noon. Incredible response time."</div><div class="mq-author">— Kevin D., Skokie</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"I've used Zuniga's three times now. Always the same great quality and honest service."</div><div class="mq-author">— Anna F., Chicago</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Best plumbers in the city. Explained the issue clearly and fixed it faster than I expected."</div><div class="mq-author">— Michael T., River North</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"My landlord uses them for the whole building. Most reliable plumbers I've ever dealt with."</div><div class="mq-author">— Carlos V., Logan Square</div></div>
-      <!-- duplicate for seamless loop -->
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"On time, professional, and cleaned up after themselves. Will call them for every plumbing issue."</div><div class="mq-author">— Tony G., Chicago</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Very honest and upfront with pricing. No surprises on the bill. The work was done perfectly."</div><div class="mq-author">— Rosa M., Evanston</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Water heater went out on a Saturday morning — they had it replaced by noon. Incredible response time."</div><div class="mq-author">— Kevin D., Skokie</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"I've used Zuniga's three times now. Always the same great quality and honest service."</div><div class="mq-author">— Anna F., Chicago</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Best plumbers in the city. Explained the issue clearly and fixed it faster than I expected."</div><div class="mq-author">— Michael T., River North</div></div>
-      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"My landlord uses them for the whole building. Most reliable plumbers I've ever dealt with."</div><div class="mq-author">— Carlos V., Logan Square</div></div>
-    </div>
+    <div class="marquee-track reverse" id="marqueeRow2"></div>
   </div>
 </section>
 
@@ -476,10 +461,10 @@
 <section class="reputation" id="about">
   <div class="reputation-inner">
     <div class="reveal">
-      <div class="rep-label">Why Zuniga's</div>
-      <div class="rep-title">Built on <span>50 Years</span> of Trust</div>
+      <div class="rep-label" id="repLabel">Why Zuniga's</div>
+      <div class="rep-title" id="repTitle">Built on <span>50 Years</span> of Trust</div>
       <div class="rep-accent"></div>
-      <p class="rep-intro">Chicago's go-to plumber since 1975 — not because of marketing, because of results. Every job, every time.</p>
+      <p class="rep-intro" id="repIntro">Chicago's go-to plumber since 1975 — not because of marketing, because of results. Every job, every time.</p>
       <div class="rep-stats">
         <div class="rep-stat"><div class="rep-stat-num" id="rs1" data-target="50" data-suffix="+">0+</div><div class="rep-stat-lbl">Years serving Chicago</div></div>
         <div class="rep-stat"><div class="rep-stat-num" id="rs2" data-target="200" data-suffix="+">0+</div><div class="rep-stat-lbl">5-star reviews</div></div>
@@ -487,7 +472,7 @@
         <div class="rep-stat"><div class="rep-stat-num"><span>A+</span></div><div class="rep-stat-lbl">BBB rating</div></div>
       </div>
     </div>
-    <div class="reveal">
+    <div class="reveal" id="repTrustItems">
       <div class="rep-trust-item"><div class="rep-trust-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="rep-trust-title">Licensed & Bonded</div><div class="rep-trust-text">City & State licensed. Fully insured for residential and commercial.</div></div></div>
       <div class="rep-trust-item"><div class="rep-trust-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="rep-trust-title">Same-Day Service</div><div class="rep-trust-text">Trucks stocked daily. Most jobs done in one visit.</div></div></div>
       <div class="rep-trust-item"><div class="rep-trust-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div><div class="rep-trust-title">Honest Pricing</div><div class="rep-trust-text">Free quotes. No hidden fees. No surprises.</div></div></div>
@@ -519,11 +504,13 @@
       <div class="faq-title">Common Questions</div>
       <p class="faq-sub">Everything you need to know before you call.</p>
     </div>
+    <div id="faqItems">
     <div class="faq-item"><button class="faq-btn"><span class="faq-q-text">Do you offer free estimates?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-body"><div class="faq-answer">Yes — free quotes on all jobs. Call (773) 619-2730 or fill out the contact form and we'll get back within 15 minutes.</div></div></div>
     <div class="faq-item"><button class="faq-btn"><span class="faq-q-text">Are you licensed and insured?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-body"><div class="faq-answer">City of Chicago License: 058170465 · Illinois State License: 055031744. Fully bonded and insured for residential and commercial work.</div></div></div>
     <div class="faq-item"><button class="faq-btn"><span class="faq-q-text">Do you offer same-day service?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-body"><div class="faq-answer">Yes. Trucks stocked daily. Most jobs are completed in a single visit. Call early for best same-day availability.</div></div></div>
     <div class="faq-item"><button class="faq-btn"><span class="faq-q-text">What areas do you serve?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-body"><div class="faq-answer">Chicago and all surrounding suburbs — Berwyn, Oak Park, Evanston, Cicero, Maywood, Bridgeview, Calumet City, South Holland, and more.</div></div></div>
     <div class="faq-item"><button class="faq-btn"><span class="faq-q-text">Do you handle residential and commercial?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-body"><div class="faq-answer">Yes — homes, commercial buildings, industrial properties, and high-rises throughout Chicago. No job too big or small.</div></div></div>
+    </div>
   </div>
 </section>
 
@@ -536,10 +523,10 @@
       <div class="section-label" style="color:#63b3ed;">Get In Touch</div>
       <div class="contact-heading">Request a Free Quote</div>
       <p class="contact-sub">Fill out the form and we'll call back within 15 minutes. Or call us directly.</p>
-      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-text">(773) 619-2730</div></div></div>
-      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-detail-label">Email</div><div class="contact-detail-text">zunigaplumbing@yahoo.com</div></div></div>
-      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-detail-label">Address</div><div class="contact-detail-text">7253 S. Green Street, Chicago, IL 60621</div></div></div>
-      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="contact-detail-label">Hours</div><div class="contact-detail-text">Mon–Fri: 8:00am – 5:00pm</div></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="contact-detail-label">Phone</div><div class="contact-detail-text" id="contactPhone">(773) 619-2730</div></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-detail-label">Email</div><div class="contact-detail-text" id="contactEmail">zunigaplumbing@yahoo.com</div></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-detail-label">Address</div><div class="contact-detail-text" id="contactAddress">7253 S. Green Street, Chicago, IL 60621</div></div></div>
+      <div class="contact-detail"><div class="contact-detail-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="contact-detail-label">Hours</div><div class="contact-detail-text" id="contactHours">Mon–Fri: 8:00am – 5:00pm</div></div></div>
     </div>
     <div class="form-card reveal">
       <div class="form-row">
@@ -572,8 +559,8 @@
 <section class="cta-banner">
   <h2>Ready to Fix It Right?</h2>
   <p>Whether it's a leaky faucet or a plumbing emergency — we're here.</p>
-  <span class="cta-phone">(773) 619-2730</span>
-  <p class="cta-sub">Mon–Fri 8:00am–5:00pm · zunigaplumbing@yahoo.com</p>
+  <a class="cta-phone" id="ctaPhone" href="tel:7736192730">(773) 619-2730</a>
+  <p class="cta-sub" id="ctaSub">Mon–Fri 8:00am–5:00pm · zunigaplumbing@yahoo.com</p>
   <div class="cta-btns">
     <button class="btn-white">Call Now</button>
     <button class="btn-outline-white">Request Free Quote</button>
@@ -583,8 +570,8 @@
 <!-- FOOTER -->
 <footer class="footer">
   <div>
-    <div class="footer-brand">Zuniga's <span>Plumbing</span> Inc.</div>
-    <div class="footer-info">
+    <div class="footer-brand" id="footerBrand">Zuniga's <span>Plumbing</span> Inc.</div>
+    <div class="footer-info" id="footerInfo">
       7253 S. Green Street<br>
       Chicago, IL 60621<br>
       (773) 619-2730<br>
@@ -618,8 +605,8 @@
   </div>
 </footer>
 <div class="footer-bottom">
-  <p>© 2026 Zuniga's Plumbing Inc. All rights reserved.</p>
-  <p style="color:rgba(255,255,255,0.18);font-size:11px;">City License: 058170465 · State License: 055031744</p>
+  <p id="footerCopyright">© 2026 Zuniga's Plumbing Inc. All rights reserved.</p>
+  <p id="footerLicense" style="color:rgba(255,255,255,0.18);font-size:11px;">City License: 058170465 · State License: 055031744</p>
 </div>
 
 <script>
@@ -690,7 +677,198 @@
   },{threshold:0.4});
   statsObs.observe(statsEl);
 
-  // FAQ blue hover (JS-controlled)
+  // ── CONFIG APPLY ──────────────────────────────────────────────────────────
+  function applyConfig(){
+    var C = window.COMPANY;
+    if(!C) return;
+
+    // --- Meta (belt-and-suspenders; also done above the fold) ---
+    document.title = C.meta.title;
+    var md = document.getElementById('metaDescription');
+    if(md) md.setAttribute('content', C.meta.description);
+
+    // --- Sticky bar ---
+    var stickyPhone = document.getElementById('stickyPhone');
+    if(stickyPhone){ stickyPhone.textContent = C.phone; stickyPhone.href = 'tel:'+C.phoneRaw; }
+    var stickyPromise = document.getElementById('stickyPromise');
+    if(stickyPromise) stickyPromise.textContent = 'We call back within '+C.stats.callbackMin+' minutes';
+
+    // --- Nav ---
+    var navBrand = document.getElementById('navBrand');
+    if(navBrand) navBrand.innerHTML = C.shortName.replace("'s Plumbing",'\'s <span>Plumbing</span>');
+    var navCta = document.getElementById('navCta');
+    if(navCta){ navCta.textContent = C.phone; navCta.href = 'tel:'+C.phoneRaw; }
+
+    // --- Hero ---
+    var heroBadge = document.getElementById('heroBadge');
+    if(heroBadge) heroBadge.textContent = '★ ' + C.heroBadge;
+    var heroSub = document.getElementById('heroSub');
+    if(heroSub) heroSub.textContent = C.heroSub;
+    var heroPromise = document.getElementById('heroPromise');
+    if(heroPromise) heroPromise.textContent = C.heroPromise;
+    var heroLocation = document.getElementById('heroLocation');
+    if(heroLocation) heroLocation.innerHTML = 'Serving <span>' + C.city + '</span>, ' + C.serviceArea.cities.slice(0,3).join(', ') + ' & suburbs';
+
+    // --- Stats counters: update data-target values from config ---
+    var c1 = document.getElementById('c1');
+    var rs1 = document.getElementById('rs1');
+    if(c1){ c1.dataset.target = C.stats.years; c1.textContent = '0+'; }
+    if(rs1){ rs1.dataset.target = C.stats.years; rs1.textContent = '0+'; }
+    var c2 = document.getElementById('c2');
+    var rs2 = document.getElementById('rs2');
+    if(c2){ c2.dataset.target = C.stats.reviewCount; c2.textContent = '0+'; }
+    if(rs2){ rs2.dataset.target = C.stats.reviewCount; rs2.textContent = '0+'; }
+    var c3 = document.getElementById('c3');
+    var rs3 = document.getElementById('rs3');
+    if(c3){ c3.dataset.target = C.stats.callbackMin; c3.textContent = '0min'; }
+    if(rs3){ rs3.dataset.target = C.stats.callbackMin; rs3.textContent = '0min'; }
+
+    // --- Ticker ---
+    var tickerInner = document.getElementById('tickerInner');
+    if(tickerInner && C.ticker && C.ticker.length){
+      var items = C.ticker.concat(C.ticker); // duplicate for seamless scroll
+      tickerInner.innerHTML = items.map(function(t){
+        return '<span class="ticker-item">'+t+' <span class="ticker-sep">·</span></span>';
+      }).join('');
+    }
+
+    // --- Reviews marquee ---
+    function makeCard(r){
+      return '<div class="mq-card">'
+        +'<div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">'+r.source+'</div></div>'
+        +'<div class="mq-text">"'+r.text+'"</div>'
+        +'<div class="mq-author">— '+r.author+'</div>'
+        +'</div>';
+    }
+    if(C.reviews && C.reviews.length >= 2){
+      var half = Math.ceil(C.reviews.length / 2);
+      var row1Reviews = C.reviews.slice(0, half);
+      var row2Reviews = C.reviews.slice(half);
+      var row1El = document.getElementById('marqueeRow1');
+      var row2El = document.getElementById('marqueeRow2');
+      if(row1El){
+        // duplicate for seamless loop
+        var r1html = row1Reviews.concat(row1Reviews).map(makeCard).join('');
+        row1El.innerHTML = r1html;
+      }
+      if(row2El){
+        var r2html = row2Reviews.concat(row2Reviews).map(makeCard).join('');
+        row2El.innerHTML = r2html;
+      }
+    }
+
+    // --- Service area pills ---
+    var areaGrid = document.getElementById('areaGrid');
+    if(areaGrid && C.serviceArea){
+      var pillsHtml = '<div class="area-pill highlight">'+C.serviceArea.primary+'</div>';
+      pillsHtml += C.serviceArea.cities.map(function(city){
+        return '<div class="area-pill">'+city+'</div>';
+      }).join('');
+      areaGrid.innerHTML = pillsHtml;
+    }
+
+    // --- FAQ items ---
+    var faqItems = document.getElementById('faqItems');
+    if(faqItems && C.faq && C.faq.length){
+      var iconSvg = '<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+      faqItems.innerHTML = C.faq.map(function(item){
+        return '<div class="faq-item">'
+          +'<button class="faq-btn"><span class="faq-q-text">'+item.q+'</span>'
+          +'<div class="faq-icon">'+iconSvg+'</div></button>'
+          +'<div class="faq-body"><div class="faq-answer">'+item.a+'</div></div>'
+          +'</div>';
+      }).join('');
+    }
+
+    // --- Reputation section ---
+    var repIntro = document.getElementById('repIntro');
+    if(repIntro) repIntro.textContent = C.reputation.intro;
+    var repTitle = document.getElementById('repTitle');
+    if(repTitle) repTitle.innerHTML = C.reputation.title.replace(/(\d+)/,'<span>$1</span>');
+    var repLabel = document.getElementById('repLabel');
+    if(repLabel) repLabel.textContent = 'Why ' + C.shortName;
+
+    // Trust items — keep existing SVG icons, just update text
+    var trustItems = document.querySelectorAll('#repTrustItems .rep-trust-item');
+    if(trustItems.length && C.reputation.trustItems){
+      C.reputation.trustItems.forEach(function(item, i){
+        if(trustItems[i]){
+          var titleEl = trustItems[i].querySelector('.rep-trust-title');
+          var textEl = trustItems[i].querySelector('.rep-trust-text');
+          if(titleEl) titleEl.textContent = item.title;
+          if(textEl) textEl.textContent = item.text;
+        }
+      });
+    }
+
+    // --- Contact section ---
+    var contactPhone = document.getElementById('contactPhone');
+    if(contactPhone) contactPhone.textContent = C.phone;
+    var contactEmail = document.getElementById('contactEmail');
+    if(contactEmail) contactEmail.textContent = C.email;
+    var contactAddress = document.getElementById('contactAddress');
+    if(contactAddress) contactAddress.textContent = C.address.full;
+    var contactHours = document.getElementById('contactHours');
+    if(contactHours) contactHours.textContent = C.hours;
+
+    // --- CTA banner ---
+    var ctaPhone = document.getElementById('ctaPhone');
+    if(ctaPhone){ ctaPhone.textContent = C.phone; ctaPhone.href = 'tel:'+C.phoneRaw; }
+    var ctaSub = document.getElementById('ctaSub');
+    if(ctaSub) ctaSub.textContent = C.hours + ' · ' + C.email;
+
+    // --- Footer ---
+    var footerBrand = document.getElementById('footerBrand');
+    if(footerBrand){
+      var parts = C.name.split("'s Plumbing");
+      footerBrand.innerHTML = parts[0]+"'s <span>Plumbing</span>"+parts[1];
+    }
+    var footerInfo = document.getElementById('footerInfo');
+    if(footerInfo) footerInfo.innerHTML = C.address.street+'<br>'+C.address.city+', '+C.address.state+' '+C.address.zip+'<br>'+C.phone+'<br>'+C.email;
+    var footerCopyright = document.getElementById('footerCopyright');
+    if(footerCopyright) footerCopyright.textContent = '© '+C.footerCopyright+' '+C.name+'. All rights reserved.';
+    var footerLicense = document.getElementById('footerLicense');
+    if(footerLicense) footerLicense.textContent = 'City License: '+C.licenseCity+' · State License: '+C.licenseState;
+  }
+
+  // Run applyConfig, then re-attach FAQ listeners (FAQ may have been rebuilt)
+  function attachFaqListeners(){
+    document.querySelectorAll('.faq-btn').forEach(function(btn){
+      var text=btn.querySelector('.faq-q-text');
+      var icon=btn.querySelector('.faq-icon');
+      var svg=icon.querySelector('svg');
+      var item=btn.closest('.faq-item');
+      btn.addEventListener('mouseenter',function(){
+        if(item.classList.contains('open'))return;
+        btn.style.background='#0570de';btn.style.borderColor='#0570de';
+        text.style.color='#ffffff';icon.style.background='rgba(255,255,255,0.2)';svg.style.stroke='#ffffff';
+      });
+      btn.addEventListener('mouseleave',function(){
+        if(item.classList.contains('open'))return;
+        btn.style.background='#ffffff';btn.style.borderColor='#c8d0da';
+        text.style.color='#000000';icon.style.background='#eef2f7';svg.style.stroke='#0570de';
+      });
+      btn.addEventListener('click',function(){
+        var open=item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(i){
+          i.classList.remove('open');
+          var b=i.querySelector('.faq-btn');var t=i.querySelector('.faq-q-text');
+          var ic=i.querySelector('.faq-icon');var s=ic.querySelector('svg');
+          b.style.background='#ffffff';b.style.borderColor='#c8d0da';
+          t.style.color='#000000';ic.style.background='#eef2f7';s.style.stroke='#0570de';
+        });
+        if(!open){
+          item.classList.add('open');
+          btn.style.background='#ffffff';btn.style.borderColor='#0570de';
+          text.style.color='#000000';icon.style.background='#eef2f7';svg.style.stroke='#0570de';
+        }
+      });
+    });
+  }
+
+  applyConfig();
+
+  // ── FAQ blue hover (JS-controlled)
   document.querySelectorAll('.faq-btn').forEach(btn=>{
     const text=btn.querySelector('.faq-q-text');
     const icon=btn.querySelector('.faq-icon');
