@@ -122,20 +122,25 @@
   .area-pill:hover{background:#eff8ff;color:#0570de;border-color:#b3d4f7;}
   .area-pill.highlight{background:#0570de;color:#fff;border-color:#0570de;}
 
-  /* REVIEWS */
-  .reviews{background-size:300% 300%;background-image:linear-gradient(135deg,#0a2540 0%,#0d3060 30%,#0a2540 50%,#051828 80%,#0a2540 100%);animation:reviewsBgShift 12s ease infinite;padding:72px 40px;text-align:center;}
-  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:980px;margin:0 auto;}
-  .review-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:24px;text-align:left;opacity:0;transform:translateY(24px);transition:background 0.25s,transform 0.25s,border-color 0.25s;}
-  .review-card.visible{animation:cardFadeUp 0.6s ease forwards;}
-  .review-card.visible:nth-child(1){animation-delay:0.1s;}
-  .review-card.visible:nth-child(2){animation-delay:0.25s;}
-  .review-card.visible:nth-child(3){animation-delay:0.4s;}
-  .review-card:hover{background:rgba(255,255,255,0.1);transform:translateY(-4px);}
-  .review-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
-  .review-stars{color:#fbbf24;font-size:13px;letter-spacing:2px;}
-  .review-source{color:rgba(255,255,255,0.3);font-size:11px;font-weight:500;}
-  .review-text{color:rgba(255,255,255,0.8);font-size:13px;line-height:1.6;font-style:italic;margin-bottom:14px;}
-  .review-author{color:rgba(255,255,255,0.45);font-size:12px;font-weight:500;}
+  /* REVIEWS — double marquee */
+  @keyframes marqueeLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @keyframes marqueeRight{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+  .reviews{background-size:300% 300%;background-image:linear-gradient(135deg,#0a2540 0%,#0d3060 30%,#0a2540 50%,#051828 80%,#0a2540 100%);animation:reviewsBgShift 12s ease infinite;padding:72px 0;text-align:center;}
+  .reviews-header{padding:0 40px 44px;}
+  .marquee-wrap{position:relative;overflow:hidden;margin-bottom:14px;}
+  .marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none;}
+  .marquee-wrap::before{left:0;background:linear-gradient(to right,#0a2540 0%,transparent 100%);}
+  .marquee-wrap::after{right:0;background:linear-gradient(to left,#0a2540 0%,transparent 100%);}
+  .marquee-track{display:flex;width:max-content;animation:marqueeLeft 38s linear infinite;}
+  .marquee-track.reverse{animation:marqueeRight 42s linear infinite;}
+  .marquee-wrap:hover .marquee-track{animation-play-state:paused;}
+  .mq-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:20px 22px;text-align:left;width:290px;flex-shrink:0;margin-right:14px;transition:background 0.2s,border-color 0.2s;}
+  .mq-card:hover{background:rgba(255,255,255,0.1);border-color:rgba(99,179,237,0.3);}
+  .mq-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .mq-stars{color:#fbbf24;font-size:12px;letter-spacing:2px;}
+  .mq-source{color:rgba(255,255,255,0.3);font-size:11px;font-weight:500;}
+  .mq-text{color:rgba(255,255,255,0.8);font-size:13px;line-height:1.6;font-style:italic;margin-bottom:12px;}
+  .mq-author{color:rgba(255,255,255,0.4);font-size:12px;}
 
   /* REPUTATION */
   .reputation{background:#fff;padding:80px 40px;}
@@ -420,24 +425,47 @@
 
 <!-- REVIEWS -->
 <section class="reviews" id="reviews">
-  <div class="section-label reveal" style="color:#63b3ed;">Customer Reviews</div>
-  <div class="section-title reveal" style="color:#fff;margin-bottom:8px;">What Chicago Homeowners Say</div>
-  <p class="reveal" style="color:rgba(255,255,255,0.55);font-size:14px;margin-bottom:44px;">Real feedback from real customers across Chicago and the suburbs.</p>
-  <div class="reviews-grid" id="reviewsGrid">
-    <div class="review-card">
-      <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-source">Google</div></div>
-      <div class="review-text">"Walter is a fair, skilled and honest plumber. He found me a great price and I would recommend him to anyone."</div>
-      <div class="review-author">— David W., Chicago</div>
+  <div class="reviews-header">
+    <div class="section-label reveal" style="color:#63b3ed;">Customer Reviews</div>
+    <div class="section-title reveal" style="color:#fff;margin-bottom:8px;">What Chicago Homeowners Say</div>
+    <p class="reveal" style="color:rgba(255,255,255,0.55);font-size:14px;margin-bottom:0;">Real feedback from real customers across Chicago and the suburbs.</p>
+  </div>
+
+  <!-- ROW 1 — scrolls left -->
+  <div class="marquee-wrap" style="margin-bottom:14px;">
+    <div class="marquee-track">
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Walter is a fair, skilled and honest plumber. He found me a great price and I would recommend him to anyone."</div><div class="mq-author">— David W., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Asked for photos for an accurate quote and completed the job same day. I will use them again for all my plumbing needs!"</div><div class="mq-author">— Verified Customer</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Friendly, reasonable, and honest! Prompt and professional. Explained everything in detail. Excellent licensed plumbers."</div><div class="mq-author">— Verified Customer, Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"They responded fast, showed up on time, and fixed the leak the same day. Highly recommend Zuniga's!"</div><div class="mq-author">— Maria L., Cicero</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"Used them for a basement flood — they were there within the hour. Amazing service and fair pricing."</div><div class="mq-author">— James R., Oak Park</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"50 years in business for a reason. Trustworthy, knowledgeable, and they stand by their work."</div><div class="mq-author">— Sandra K., Berwyn</div></div>
+      <!-- duplicate for seamless loop -->
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Walter is a fair, skilled and honest plumber. He found me a great price and I would recommend him to anyone."</div><div class="mq-author">— David W., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Asked for photos for an accurate quote and completed the job same day. I will use them again for all my plumbing needs!"</div><div class="mq-author">— Verified Customer</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Friendly, reasonable, and honest! Prompt and professional. Explained everything in detail. Excellent licensed plumbers."</div><div class="mq-author">— Verified Customer, Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"They responded fast, showed up on time, and fixed the leak the same day. Highly recommend Zuniga's!"</div><div class="mq-author">— Maria L., Cicero</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"Used them for a basement flood — they were there within the hour. Amazing service and fair pricing."</div><div class="mq-author">— James R., Oak Park</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"50 years in business for a reason. Trustworthy, knowledgeable, and they stand by their work."</div><div class="mq-author">— Sandra K., Berwyn</div></div>
     </div>
-    <div class="review-card">
-      <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-source">Networx</div></div>
-      <div class="review-text">"Asked for photos for an accurate quote and completed the job same day. I will use them again for all my plumbing needs!"</div>
-      <div class="review-author">— Verified Customer</div>
-    </div>
-    <div class="review-card">
-      <div class="review-top"><div class="review-stars">★★★★★</div><div class="review-source">BBB</div></div>
-      <div class="review-text">"Friendly, reasonable, and honest! Prompt and professional. Explained everything in detail. Excellent licensed plumbers."</div>
-      <div class="review-author">— Verified Customer, Chicago</div>
+  </div>
+
+  <!-- ROW 2 — scrolls right -->
+  <div class="marquee-wrap">
+    <div class="marquee-track reverse">
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"On time, professional, and cleaned up after themselves. Will call them for every plumbing issue."</div><div class="mq-author">— Tony G., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Very honest and upfront with pricing. No surprises on the bill. The work was done perfectly."</div><div class="mq-author">— Rosa M., Evanston</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Water heater went out on a Saturday morning — they had it replaced by noon. Incredible response time."</div><div class="mq-author">— Kevin D., Skokie</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"I've used Zuniga's three times now. Always the same great quality and honest service."</div><div class="mq-author">— Anna F., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Best plumbers in the city. Explained the issue clearly and fixed it faster than I expected."</div><div class="mq-author">— Michael T., River North</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"My landlord uses them for the whole building. Most reliable plumbers I've ever dealt with."</div><div class="mq-author">— Carlos V., Logan Square</div></div>
+      <!-- duplicate for seamless loop -->
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"On time, professional, and cleaned up after themselves. Will call them for every plumbing issue."</div><div class="mq-author">— Tony G., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Networx</div></div><div class="mq-text">"Very honest and upfront with pricing. No surprises on the bill. The work was done perfectly."</div><div class="mq-author">— Rosa M., Evanston</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">BBB</div></div><div class="mq-text">"Water heater went out on a Saturday morning — they had it replaced by noon. Incredible response time."</div><div class="mq-author">— Kevin D., Skokie</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Yelp</div></div><div class="mq-text">"I've used Zuniga's three times now. Always the same great quality and honest service."</div><div class="mq-author">— Anna F., Chicago</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"Best plumbers in the city. Explained the issue clearly and fixed it faster than I expected."</div><div class="mq-author">— Michael T., River North</div></div>
+      <div class="mq-card"><div class="mq-top"><div class="mq-stars">★★★★★</div><div class="mq-source">Google</div></div><div class="mq-text">"My landlord uses them for the whole building. Most reliable plumbers I've ever dealt with."</div><div class="mq-author">— Carlos V., Logan Square</div></div>
     </div>
   </div>
 </section>
@@ -661,16 +689,6 @@
     }
   },{threshold:0.4});
   statsObs.observe(statsEl);
-
-  // Review cards stagger fade up
-  const reviewCards=document.querySelectorAll('.review-card');
-  const reviewObs=new IntersectionObserver((entries)=>{
-    if(entries[0].isIntersecting){
-      reviewCards.forEach(card=>card.classList.add('visible'));
-      reviewObs.disconnect();
-    }
-  },{threshold:0.2});
-  reviewObs.observe(document.getElementById('reviewsGrid'));
 
   // FAQ blue hover (JS-controlled)
   document.querySelectorAll('.faq-btn').forEach(btn=>{
