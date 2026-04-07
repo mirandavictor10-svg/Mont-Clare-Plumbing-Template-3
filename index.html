@@ -812,7 +812,7 @@
     var stepsGrid = document.getElementById('stepsGrid');
     if(stepsGrid && C.howItWorks && C.howItWorks.length){
       stepsGrid.innerHTML = C.howItWorks.map(function(step, index){
-        return '<article class="step-card reveal">'
+        return '<article class="step-card visible">'
           + '<div class="step-num">'+(index + 1)+'</div>'
           + '<div class="step-title">'+step.title+'</div>'
           + '<div class="step-desc">'+step.desc+'</div>'
