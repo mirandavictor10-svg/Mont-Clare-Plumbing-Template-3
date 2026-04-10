@@ -1,97 +1,97 @@
 window.COMPANY = {
-  name: "Nuzzo Sewer & Plumbing",
-  shortName: "Nuzzo Plumbing",
-  founderName: "Len Nuzzo",
-  yearsInBusiness: 78,
+  name: "Mont Clare Plumbing",
+  shortName: "Mont Clare Plumbing",
+  founderName: "Edgar",
+  yearsInBusiness: 10,
   city: "Chicago",
-  phone: "(773) 625-6280",
-  phoneRaw: "7736256280",
-  secondaryPhone: "(708) 456-7300",
-  secondaryPhoneRaw: "7084567300",
-  secondaryPhoneLabel: "Suburban Line",
+  phone: "(773) 306-5009",
+  phoneRaw: "7733065009",
+  secondaryPhone: "",
+  secondaryPhoneRaw: "",
+  secondaryPhoneLabel: "",
   email: "",
   address: {
-    street: "8619 W Leland Ave",
+    street: "3848 N Harlem Ave",
     city: "Chicago",
     state: "IL",
-    zip: "60656",
-    full: "8619 W Leland Ave, Chicago, IL 60656"
+    zip: "60634",
+    full: "3848 N Harlem Ave, Chicago, IL 60634"
   },
-  hours: "Emergency service available. Call for appointment scheduling.",
-  licenseCity: "PC# 14636",
-  licenseState: "Licensed, Bonded & Insured",
-  bbbSince: "Serving Chicago Since 1948",
+  hours: "Call for availability. Same-day service on most calls.",
+  licenseCity: "IL License #058-200115",
+  licenseState: "Contractor #055-045453",
+  bbbSince: "Thumbtack Top Pro 2024 & 2025",
   meta: {
-    title: "Nuzzo Sewer & Plumbing | Chicago Plumbing & Sewer Service Since 1948",
-    description: "Family-owned plumbing, sewer, flood-control, and remodeling service in Chicago and the northwest suburbs. Free estimates, licensed work, and emergency availability."
+    title: "Mont Clare Plumbing | Chicago's 5-Star Rated Plumber — (773) 306-5009",
+    description: "Family-owned Chicago plumber with 10+ years experience. 5-star rated, 200+ reviews. Licensed, insured. Senior & veteran discounts. Same-day service available."
   },
-  heroBadge: "Serving Chicago & the Northwest Suburbs Since 1948",
-  heroSub: "Family-owned plumbing, sewer, flood-control, and remodeling service for homes, businesses, and industrial buildings across Chicago and the nearby suburbs.",
-  heroLocation: "Serving Chicago, Elmwood Park, Des Plaines & nearby suburbs",
-  heroPromise: "Emergency service available · Same-day appointments on most calls",
+  heroBadge: "Chicago's Top-Rated Family-Owned Plumber — 200+ Five-Star Reviews",
+  heroSub: "Clogged drain? Leaking pipe? Water heater out? We treat your home like our own. Same-day service, upfront pricing, no hidden fees.",
+  heroLocation: "Serving Mont Clare, Dunning, Belmont Cragin, Elmwood Park & nearby areas",
+  heroPromise: "Same-day service available · Senior & veteran discounts · 100% satisfaction guaranteed",
   stats: {
-    years: 78,
-    reviewCount: 28,
-    callbackMin: 90
+    years: 10,
+    reviewCount: 200,
+    callbackMin: 60
   },
   reviewBadges: [
-    { platform: "Yelp", rating: "4.5", count: "28 reviews", theme: "yelp" },
-    { platform: "Since", rating: "1948", count: "Family-owned", theme: "default" },
-    { platform: "PC#", rating: "14636", count: "Licensed & insured", theme: "bbb" }
+    { platform: "Nextdoor", rating: "5.0", count: "176 reviews", theme: "default" },
+    { platform: "Thumbtack", rating: "5.0", count: "63 reviews", theme: "default" },
+    { platform: "Top Pro", rating: "2024-25", count: "Thumbtack verified", theme: "bbb" }
   ],
   reviews: [
-    { text: "Len and his assistant came out right away and were helpful, careful, quick, and efficient.", author: "Sarah C., Chicago", source: "Nuzzo site review" },
-    { text: "These are my guys. Reliable and reasonable.", author: "Jake Elkins-Ryan, Chicago", source: "Nuzzo site review" },
-    { text: "Very dependable, fair, and trustworthy. I have called Nuzzo several times and would absolutely recommend them.", author: "Matt Lane, Chicago", source: "Nuzzo site review" },
-    { text: "Len arrived quickly, fixed a problem two other plumbers quoted far higher, and solved it in under an hour.", author: "Mark C., Norwood Park", source: "Yahoo local review" },
-    { text: "We have had several repairs done by Nuzzo and they have always been prompt and honest in their dealings.", author: "John M., Chicago", source: "Yahoo local review" },
-    { text: "For sewer work, flood-control concerns, and everyday plumbing repairs, the team is experienced and easy to work with.", author: "Local customer, Elmwood Park", source: "Public review summary" }
+    { text: "Edgar is a great plumber. Arrived on time and repaired my toilet quickly and efficiently. Cleaned up after himself too.", author: "M.N., Chicago", source: "Nextdoor review" },
+    { text: "Amazing work! Super responsive and professional. Completed within hours, great job and cleaned up.", author: "Ty M., Chicago", source: "Thumbtack review" },
+    { text: "Treated me with respect, honesty, and professionalism. 10 out of 10!", author: "Patty B., Chicago", source: "Thumbtack review" },
+    { text: "Incredibly helpful, speedy, and informative. Wonderful to work with.", author: "Sharon G., Chicago", source: "Thumbtack review" },
+    { text: "Good job resolving the issue, identifying other issues, and explaining everything clearly.", author: "Matt C., Chicago", source: "Thumbtack review" },
+    { text: "Very pleasant, respectful, and I was fully satisfied with the work. Would highly recommend.", author: "Yesenia A., Chicago", source: "Thumbtack review" }
   ],
   serviceArea: {
     primary: "Chicago",
-    cities: ["Elmwood Park", "Des Plaines", "Forest Park", "Harwood Heights", "Morton Grove", "Niles", "Norridge", "Oak Park", "Park Ridge", "River Forest", "River Grove", "Rosemont", "Schiller Park"]
+    cities: ["Elmwood Park", "River Grove", "Norridge", "Harwood Heights", "Franklin Park", "Schiller Park", "Oak Park", "Park Ridge", "Des Plaines", "Niles", "Morton Grove", "Rosemont", "River Forest"]
   },
   services: [
-    { name: "Drain Cleaning & Power Rodding", desc: "Professional drain clearing and power rodding for sinks, tubs, floor drains, and main lines." },
-    { name: "Fixture & Water Heater Repairs", desc: "Repair and replacement for toilets, sinks, faucets, tubs, showers, and water heaters." },
-    { name: "Sewer Repairs & Video Inspection", desc: "Sewer service, cleanout installation, pipe locating, and camera inspection for difficult line issues." },
-    { name: "Flood Control & Pump Systems", desc: "Flood-control systems, sump pumps, ejector pumps, and catch basin work to help protect your property." },
-    { name: "Water Lines & Pressure Repair", desc: "Broken water lines, low pressure diagnosis, and underground water work for homes and businesses." },
-    { name: "Kitchen & Bath Remodeling", desc: "Rough-in and finish plumbing for remodeling projects, fixture upgrades, and rehab work." }
+    { name: "Drain Cleaning", desc: "Professional drain clearing for sinks, tubs, showers, floor drains, and main sewer lines." },
+    { name: "Water Heater Service", desc: "Installation, repair, and maintenance for tank and tankless water heaters." },
+    { name: "Fixture Installation & Repair", desc: "Toilets, sinks, faucets, showers, bathtubs, and garbage disposals installed or repaired." },
+    { name: "Sewer & Drainage", desc: "Sewer contracting, drainage repair, and water treatment for residential properties." },
+    { name: "Sump Pump Systems", desc: "Sump pump installation and replacement to protect your basement from water damage." },
+    { name: "Gas Line Service", desc: "Licensed gas line installation and repair. Don't wait — gas leaks get worse fast." }
   ],
   howItWorks: [
     {
-      title: "Call the Right Office",
-      desc: "Use our Chicago or suburban line and tell us whether you have an emergency, sewer issue, plumbing repair, or a larger project."
+      title: "Call (773) 306-5009",
+      desc: "Tell us what's going on. We'll ask a few quick questions and schedule a visit — often the same day you call."
     },
     {
-      title: "Get a Free Estimate",
-      desc: "We talk through the problem, confirm the service area, and help you line up the right next step with no-pressure estimating."
+      title: "Get an Upfront Estimate",
+      desc: "Edgar or a team member arrives on time, diagnoses the problem, and gives you a clear price. No hidden fees."
     },
     {
-      title: "Licensed Work Done Right",
-      desc: "Our team completes the repair or installation with experienced workmanship, clean habits, and local accountability."
+      title: "Problem Solved, Guaranteed",
+      desc: "We fix it right, clean up after ourselves, and don't leave until you're 100% satisfied."
     }
   ],
   faq: [
-    { q: "Do you offer free estimates?", a: "Yes. Nuzzo Sewer & Plumbing offers free estimates. Call either office line and we will help you schedule the right next step." },
-    { q: "Are you licensed and insured?", a: "Yes. Nuzzo Sewer & Plumbing lists the business as licensed, bonded, and insured and publishes license number PC# 14636." },
-    { q: "Do you offer same-day service?", a: "Yes. Same-day appointments are often available depending on timing, scope, and crew availability." },
-    { q: "What areas do you serve?", a: "Chicago and nearby suburbs including Des Plaines, Elmwood Park, Forest Park, Harwood Heights, Morton Grove, Niles, Norridge, Oak Park, Park Ridge, River Forest, River Grove, Rosemont, and Schiller Park." },
-    { q: "Do you handle residential and commercial work?", a: "Yes. Nuzzo markets plumbing and sewer services for homes, businesses, and industrial buildings." },
-    { q: "What specialties does Nuzzo highlight?", a: "The company highlights plumbing repairs and installations, sewer repairs, power rodding, flood control, remodeling plumbing, pumps, and water line work." }
+    { q: "Do you offer same-day service?", a: "Yes. Mont Clare Plumbing offers same-day service on most calls. Call (773) 306-5009 and we will do our best to get to you today." },
+    { q: "Are you licensed and insured?", a: "Yes. Edgar holds Illinois Plumber License #058-200115 and Plumbing Contractor License #055-045453. We are fully licensed and insured." },
+    { q: "Do you offer discounts?", a: "Yes. We offer discounts for seniors, veterans, and first responders. Ask about current specials when you call." },
+    { q: "What areas do you serve?", a: "We serve Chicago's northwest side including Mont Clare, Dunning, Belmont Cragin, Portage Park, Norwood Park, and Jefferson Park, plus nearby suburbs like Elmwood Park, River Grove, Norridge, and Harwood Heights." },
+    { q: "Do you give upfront pricing?", a: "Yes. We provide transparent, upfront estimates before work begins. No hidden fees, no surprises." },
+    { q: "What types of plumbing work do you handle?", a: "Drain cleaning, pipe repair, water heaters, toilets, fixtures, sump pumps, gas lines, bathroom remodeling, sewer work, and emergency plumbing." }
   ],
   reputation: {
-    title: "Built on 78 Years of Trust",
-    intro: "Chicago customers keep calling Nuzzo because the work is licensed, straightforward, and backed by decades of local experience.",
+    title: "200+ Five-Star Reviews. Zero Shortcuts.",
+    intro: "Chicago homeowners trust Mont Clare Plumbing because Edgar treats every job like it's in his own home — honest pricing, clean work, and real accountability.",
     trustItems: [
-      { title: "Family-Owned Since 1948", text: "Three generations of plumbing experience rooted in Chicago neighborhoods and nearby suburbs." },
-      { title: "Licensed & Insured", text: "Published license information, bonded work, and professional service for residential and commercial jobs." },
-      { title: "Sewer & Flood-Control Specialists", text: "Experienced with sewer repairs, video inspections, pumps, catch basins, and related urgent problems." },
-      { title: "Free Estimates", text: "Clear next steps and no-pressure estimating before the work gets underway." }
+      { title: "5.0★ on Nextdoor & Thumbtack", text: "Over 200 verified five-star reviews from real Chicago homeowners across multiple platforms." },
+      { title: "Licensed & Fully Insured", text: "IL Plumber License #058-200115 and Contractor License #055-045453. Your home is protected." },
+      { title: "Thumbtack Top Pro 2024 & 2025", text: "Recognized as a top-performing professional two years running based on reviews, response time, and quality." },
+      { title: "Senior & Veteran Discounts", text: "We give back to the community that trusts us. Ask about discounts for seniors, veterans, and first responders." }
     ]
   },
-  ticker: ["Drain Cleaning", "Power Rodding", "Sewer Repairs", "Flood Control", "Water Heaters", "Sump Pumps", "Water Lines", "Kitchen Remodeling", "Bathroom Remodeling", "Video Inspection"],
-  schemaServices: ["Plumbing repairs", "Drain cleaning", "Power rodding", "Sewer repairs", "Flood control", "Water lines", "Kitchen remodeling plumbing", "Bathroom remodeling plumbing"],
+  ticker: ["Drain Cleaning", "Water Heaters", "Toilet Repair", "Sump Pumps", "Gas Lines", "Sewer Service", "Fixture Install", "Bathroom Remodel", "Emergency Plumbing", "Pipe Repair"],
+  schemaServices: ["Plumbing repairs", "Drain cleaning", "Water heater installation", "Water heater repair", "Toilet installation", "Sump pump installation", "Gas line installation", "Bathroom remodeling"],
   footerCopyright: "2026"
 };
